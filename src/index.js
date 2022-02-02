@@ -1,2 +1,2 @@
 import './style.css';
-import './js/start';
+import './js/navigation';
