@@ -23,6 +23,7 @@
         "func-names": 0,
         "@typescript-eslint/no-var-requires": 0,
         "global-require": 0,
-        "indent": 0
+        "indent": 0,
+        "no-useless-return": 0
     }
 }

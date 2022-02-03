@@ -1,3 +1,4 @@
+// --------открытие / закрытие меню
 const buttonMenu = document.querySelector('.icon-nav');
 const firstMenuLine = document.querySelector('.first-line');
 const secondMenuLine = document.querySelector('.second-line');
@@ -13,3 +14,8 @@ function openCloseMenu() {
 }
 buttonMenu.addEventListener('click', openCloseMenu);
 shadow.addEventListener('click', openCloseMenu);
+
+// ------------переход между секциями-----------
+const pages = [];
+const mainPage = document.querySelector('.main-page');
+pages.push(mainPage);

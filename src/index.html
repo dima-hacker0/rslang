@@ -26,24 +26,6 @@
                 </div>
             </div>
         </div>
-    </header>
-    <section class="main-page">
-        <div class="container-start-page">
-            <div class="first-start-column">
-                <div class="main-text-rslang">RSLang</div>
-                <div class="about-application">Приложение для эффективного изучения иностранных слов в игровой форме. Всегда под рукой. На любом устройстве</div>
-            </div>
-            <div class="second-main-column">
-                <div class="buttons-start-page">
-                    <button class="button-about-project">О проекте</button>
-                    <button class="registration-button">Регистрация</button>
-                </div>
-            </div>
-            
-        </div>
-
-
-
         <nav class="navigation-section hide-navigation">
             <ul class="navigation-pages">
                 <li class="page-navigation">Главная</li>
@@ -53,8 +35,58 @@
                 <li class="page-navigation">О команде</li>
             </ul>
         </nav>
+    </header>
+    <section style="display: none;" class="main-page">
+        <div class="container-start-page">
+            <div class="first-start-column">
+                <div class="main-text-rslang">RSLang</div>
+                <div class="about-application">Приложение для эффективного изучения иностранных слов в игровой форме. Всегда под рукой. На любом устройстве</div>
+            </div>
+            <div class="second-main-column">
+                <div class="buttons-start-page">
+                    <button class="button-about-project">О проекте</button>
+                    <button class="registration-button">Войти</button>
+                </div>
+            </div>
+        </div>
     </section>
-    <footer class="footer">
+    <section style="display: none;" class="page-mini-games">
+        <div class="container-games-page">
+            <div class="left-side-page-mimi-games">
+                <h2 class="text-choice-game">Выберите игру</h2>
+                <button class="button-min-games">
+                    <div class="text-for-games-buttons">Спринт</div>
+                    <img class="run-person" src="./img/svg/run-person.svg" alt="run-person">
+                </button>
+                <button class="button-min-games">
+                    <div class="text-for-games-buttons">Аудиовызов</div>
+                    <img class="sound-img" src="./img/svg/sound.svg" alt="sound">
+                </button>
+            </div>
+
+            <div class="right-side-page-mimi-games">
+                <h2 class="text-choice-game">Выберите сложность</h2>
+                <div class="block-buttons-level-english">
+                    <button id="number-level-button-1" class="button-level-english number-level-button-1 click-button">A1 Elementary</button>
+                    <button id="number-level-button-2" class="button-level-english number-level-button-2">A2 Pre-Intermediate</button>
+                    <button id="number-level-button-3" class="button-level-english number-level-button-3">B1 Intermediate</button>
+                    <button id="number-level-button-4" class="button-level-english number-level-button-4">B2 Upper-Intermediate</button>
+                    <button id="number-level-button-5" class="button-level-english number-level-button-5">C1 Advanced</button>
+                    <button id="number-level-button-6" class="button-level-english number-level-button-6">C2 Proficiency</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-game-sprint">
+        <div class="game-area-sprint">
+            <div class="guess-in-a-row">
+                <div class="button-right-answer"></div>
+                <div class="button-right-answer"></div>
+                <div class="button-right-answer"></div>
+            </div>
+        </div>
+    </section>
+    <footer style="display: none;" class="footer">
         <div class="container-footer">
                 <a class="rss-logo" href="https://rs.school/index.html"><img src="./img/svg/rs_school.svg" alt="logo"></a>
                 <div class="year-of-created">2022</div>
