@@ -30,13 +30,14 @@
             <ul class="navigation-pages">
                 <li class="page-navigation">Главная</li>
                 <li class="page-navigation">Учебник</li>
-                <li class="page-navigation">Мини-игры</li>
+                <li id="button-mini-games" class="page-navigation">Мини-игры</li>
                 <li class="page-navigation">Статистика</li>
                 <li class="page-navigation">О команде</li>
             </ul>
         </nav>
+        
     </header>
-    <section style="display: none;" class="main-page">
+    <section class="main-page">
         <div class="container-start-page">
             <div class="first-start-column">
                 <div class="main-text-rslang">RSLang</div>
@@ -50,11 +51,11 @@
             </div>
         </div>
     </section>
-    <section style="display: none;" class="page-mini-games">
+    <section class="page-mini-games hide-block">
         <div class="container-games-page">
             <div class="left-side-page-mimi-games">
                 <h2 class="text-choice-game">Выберите игру</h2>
-                <button class="button-min-games">
+                <button id="button-game-sprint" class="button-min-games">
                     <div class="text-for-games-buttons">Спринт</div>
                     <img class="run-person" src="./img/svg/run-person.svg" alt="run-person">
                 </button>
@@ -63,7 +64,6 @@
                     <img class="sound-img" src="./img/svg/sound.svg" alt="sound">
                 </button>
             </div>
-
             <div class="right-side-page-mimi-games">
                 <h2 class="text-choice-game">Выберите сложность</h2>
                 <div class="block-buttons-level-english">
@@ -77,22 +77,56 @@
             </div>
         </div>
     </section>
-    <section class="section-game-sprint">
+
+    <section class="section-game-sprint hide-block">
         <div class="game-area-sprint">
-            <div class="guess-in-a-row">
-                <div class="button-right-answer"></div>
-                <div class="button-right-answer"></div>
-                <div class="button-right-answer"></div>
+            <div class="english-word-text">слово на англ</div>
+            <div class="translate-word-text">перевод</div>
+            <div class="block-buttons-true-false-sprint">
+                <button class="button-true-false-sprint false-button-sprint">Неверно</button>
+                <button class="button-true-false-sprint true-button-sprint">Верно</button>
             </div>
+            <div class="arrows-sprint-block">
+                <img class="arrows-sprint" src="./img/svg/left-arrow-white.svg" alt="left-arrow">
+                <img class="arrows-sprint" src="./img/svg/right-arrow-white.svg" alt="right-arrow">
+            </div>
+            <div class="score-sprint">Score: 0</div>
+            <div class="time-sprint">60</div>
+            <div class="coefficient-sprint-game">X1</div>
         </div>
+ 
+        <div class="area-result-sprint hide-block">
+            <h3 class="result-of-sprint">Ваш результат: 777 очков</h3>
+            <div class="percent-right-answers-text">Процент правильных ответов: 77%</div>
+            <div class="area-with-right-and-wrong-answers">
+                <div class="answers-wrond-right-sprint">
+                    <div class="wrong-answers-sprint">
+                        <h5 class="text-mistakes-sprint">Ошибок: 1</h5>
+                        <div class="list-wrong-answers-sprint"></div>
+                    </div>
+                    <div class="right-answers-sprint">
+                        <h5 class="text-right-sprint">Знаю: 1</h5>
+                        <div class="list-true-answers-sprint"></div>
+                    </div>
+                </div>
+            </div>
+
+     
+        </div>
+        <img class="the-cross-sprint-page" src="./img/svg/the-cross.svg" alt="cross">
     </section>
-    <footer style="display: none;" class="footer">
+
+
+    <footer class="footer">
         <div class="container-footer">
                 <a class="rss-logo" href="https://rs.school/index.html"><img src="./img/svg/rs_school.svg" alt="logo"></a>
                 <div class="year-of-created">2022</div>
                 <a class="github-logo" href="https://github.com/dima-hacker0"><img class="img-github" src="./img/svg/github-logo.svg" alt="github"></a>
         </div>
     </footer>
+
     <div class="shadow" id="shadow"></div>
+    <audio id="audio-wrong-answer" src="./mp3/zvuk-nevernogo-otveta.mp3"></audio>
+    <audio id="audio-right-answer" src="./mp3/zvuk-pravilnogo-otveta.mp3"></audio>
 </body>
 </html>

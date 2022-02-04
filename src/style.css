@@ -189,6 +189,13 @@ body {
   background-color: #dbd7d2;
   position: relative;
 }
+.the-cross-sprint-page {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 30px;
+  cursor: pointer;
+}
 .container-games-page {
   padding: 20px;
   display: grid;
@@ -282,6 +289,7 @@ body {
   border: 5px solid white;
 }
 .section-game-sprint {
+  position: relative;
   background-color: #dbd7d2;
   min-height: calc(100vh - 65px);
 }
@@ -292,7 +300,6 @@ body {
   transform: translate(-50%, -50%);
   max-width: 450px;
   max-height: 360px;
-  height: 60vh;
   background-color: #ebd6bf;
   width: 100%;
   height: 100%;
@@ -300,6 +307,25 @@ body {
   border-radius: 10px;
   padding: 20px;
   box-sizing: border-box;
+  text-align: center;
+  transition: 0.5s;
+}
+.area-result-sprint {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 450px;
+  max-height: 360px;
+  background-color: #ebd6bf;
+  width: 100%;
+  height: 100%;
+  border: 5px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  transition: 0.5s;
 }
 .guess-in-a-row {
   display: flex;
@@ -311,4 +337,131 @@ body {
   background-color: white;
   border-radius: 50%;
   margin: 0 5px;
+}
+.english-word-text {
+  color: white;
+  font-size: 45px;
+  margin-top: 25px;
+}
+.translate-word-text {
+  color: white;
+  font-size: 35px;
+}
+.block-buttons-true-false-sprint {
+  margin-top: 80px;
+}
+.button-true-false-sprint {
+  height: 30px;
+  width: 35%;
+  border: 3px solid white;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+.false-button-sprint {
+  background-color: #f57359;
+}
+.true-button-sprint {
+  background-color: #00bf97;
+}
+.score-sprint {
+  position: absolute;
+  left: 0;
+  top: -35px;
+  color: white;
+  font-size: 25px;
+}
+.time-sprint {
+  position: absolute;
+  right: 0;
+  top: -35px;
+  color: white;
+  font-size: 25px;
+}
+.right-answer {
+  border: 5px solid #00bf97;
+}
+.false-answer {
+  border: 5px solid #f57359;
+}
+.arrows-sprint {
+  width: 30px;
+  margin: 0 10px;
+}
+.arrows-sprint-block {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.coefficient-sprint-game {
+  color: white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 35px;
+  top: -45px;
+  font-weight: 800;
+}
+.result-of-sprint {
+  color: white;
+  font-size: 25px;
+}
+.percent-right-answers-text {
+  color: white;
+  margin-top: 30px;
+  font-size: 18px;
+}
+.percent-right-answers {
+  color: white;
+  font-size: 80px;
+  margin-top: 15px;
+}
+.bullets-result-sprint-block {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.bullet-result-sprint {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.answers-wrond-right-sprint {
+  text-align: left;
+}
+.text-mistakes-sprint {
+  color: #f57359;
+}
+.text-right-sprint {
+  color: #00bf97;
+}
+.area-with-right-and-wrong-answers {
+  background-color: #fff;
+  margin-top: 25px;
+  padding: 10px 10px 0px 10px;
+  border-radius: 5px;
+  height: 183px;
+  max-height: 183px;
+  overflow-y: auto;
+}
+.wrong-answers-sprint {
+  border-bottom: 1px solid black;
+}
+.anwer-result {
+  display: flex;
+  align-items: center;
+}
+.img-listen-to-word {
+  width: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.text-and-its-translate-sprint {
+  margin-bottom: 4px;
+}
+.hide-block {
+  display: none;
 }
