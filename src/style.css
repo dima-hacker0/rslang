@@ -189,12 +189,22 @@ body {
   background-color: #dbd7d2;
   position: relative;
 }
-.the-cross-sprint-page {
+.the-cross-sprint-page,
+.the-cross-audiocall-page {
   position: absolute;
   right: 20px;
   top: 20px;
   width: 30px;
   cursor: pointer;
+}
+.full-screen {
+  width: 45px;
+  top: 13px;
+  right: 55px;
+  cursor: pointer;
+  position: absolute;
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(56deg)
+    brightness(106%) contrast(101%);
 }
 .container-games-page {
   padding: 20px;
@@ -293,6 +303,11 @@ body {
   background-color: #dbd7d2;
   min-height: calc(100vh - 65px);
 }
+.section-game-audiocall {
+  position: relative;
+  background-color: #dbd7d2;
+  min-height: calc(100vh - 65px);
+}
 .game-area-sprint {
   position: fixed;
   left: 50%;
@@ -310,7 +325,25 @@ body {
   text-align: center;
   transition: 0.5s;
 }
-.area-result-sprint {
+.game-area-audiocall {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 450px;
+  max-height: 383px;
+  background-color: #ebd6bf;
+  width: 100%;
+  height: 100%;
+  border: 5px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  transition: 0.5s;
+}
+.area-result-sprint,
+.area-result-audiocall {
   position: fixed;
   left: 50%;
   top: 50%;
@@ -406,7 +439,8 @@ body {
   color: white;
   font-size: 25px;
 }
-.percent-right-answers-text {
+.percent-right-answers-text,
+.percent-right-answers-text-audiocall {
   color: white;
   margin-top: 30px;
   font-size: 18px;
@@ -429,16 +463,20 @@ body {
   margin: 0 10px;
   cursor: pointer;
 }
-.answers-wrond-right-sprint {
+.answers-wrond-right-sprint,
+.answers-wrond-right-audiocall {
   text-align: left;
 }
-.text-mistakes-sprint {
+.text-mistakes-sprint,
+.text-mistakes-audiocall {
   color: #f57359;
 }
-.text-right-sprint {
+.text-right-sprint,
+.text-right-audiocall {
   color: #00bf97;
 }
-.area-with-right-and-wrong-answers {
+.area-with-right-and-wrong-answers,
+.area-with-right-and-wrong-answers-audiocall {
   background-color: #fff;
   margin-top: 25px;
   padding: 10px 10px 0px 10px;
@@ -447,7 +485,8 @@ body {
   max-height: 183px;
   overflow-y: auto;
 }
-.wrong-answers-sprint {
+.wrong-answers-sprint,
+.wrong-answers-audiocall {
   border-bottom: 1px solid black;
 }
 .anwer-result {
@@ -462,6 +501,155 @@ body {
 .text-and-its-translate-sprint {
   margin-bottom: 4px;
 }
+.img-repeat-word-audiocall {
+  width: 80%;
+  filter: invert(96%) sepia(69%) saturate(6169%) hue-rotate(151deg)
+    brightness(89%) contrast(79%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.button-repeat-word-audiocall {
+  width: 120px;
+  height: 120px;
+  background-color: white;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  margin: 0 auto;
+  border: 3px solid grey;
+  transition: 0.5s box-shadow;
+}
+.button-repeat-word-audiocall:hover {
+  box-shadow: 0px 0px 18px 10px rgb(0 0 0 / 25%);
+}
+.response-option-audiocall {
+  display: flex;
+  background-color: #fff;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.response-option-audiocall:hover {
+  box-shadow: 0px 0px 18px 10px rgb(0 0 0 / 25%);
+}
+.block-response-options-audiocall {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 25px;
+}
+.shell-number-response-audiocall {
+  height: 25px;
+  width: 25px;
+  position: relative;
+  background-color: #66ccce;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+.number-response-audiocall {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.button-next-world-audiocall {
+  background-color: #ce6698;
+  color: white;
+  border: 0;
+  width: 100px;
+  height: 36px;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.button-next-world-audiocall:hover {
+  box-shadow: 0px 0px 18px 10px rgb(0 0 0 / 25%);
+}
+.line-of-progress {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 10px;
+  background-color: #fff;
+}
+.right-answer-audiocall {
+  background-color: #00bf97;
+}
+.false-answer-audiocall {
+  background-color: #f57359;
+}
+.img-answer-audiocall {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.button-repeat-word-audiocall-open-answer {
+  width: 30px;
+  height: 30px;
+  margin-bottom: -15px;
+}
+.block-with-answer-audiocall {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.answer-word-on-english {
+  color: white;
+  margin-left: 10px;
+  font-size: 20px;
+}
 .hide-block {
   display: none;
+}
+.guide-audiocall {
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.instruction-sprint {
+  bottom: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+}
+.section-registration {
+  width: 400px;
+  height: 450px;
+  background-color: #fff;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.buttons-registr-or-enter {
+  display: flex;
+  width: 100%;
+}
+.button-registration-account {
+  color: #646664;
+  width: 50%;
+  height: 45px;
+  border: 0;
+  cursor: pointer;
+}
+.button-log-in-account {
+  color: #646664;
+  width: 50%;
+  height: 45px;
+  border: 0;
+  cursor: pointer;
+}
+.selected-button-registr {
+  color: #48c2c4;
+  border-bottom: #48c2c4 3px solid;
 }

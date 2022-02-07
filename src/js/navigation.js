@@ -1,4 +1,5 @@
 import { getAllWordsInLevelFromServ, resetResults } from './page-sprint';
+import { getAllWordsInLevelFromServ as getWordsAudio, resetResults as resetResultsAudiocall } from './audio-call';
 
 const buttonMenu = document.querySelector('.icon-nav');
 const firstMenuLine = document.querySelector('.first-line');
@@ -12,6 +13,11 @@ const pageСhoiceGame = document.querySelector('.page-mini-games');
 const buttonSprintGame = document.querySelector('#button-game-sprint');
 const sectionGameSprint = document.querySelector('.section-game-sprint');
 const theCrossSprintPage = document.querySelector('.the-cross-sprint-page');
+const buttonGameAudiocall = document.querySelector('#button-game-audiocall');
+const pageAudiocall = document.querySelector('.section-game-audiocall');
+const theCrossAudiocallPage = document.querySelector('.the-cross-audiocall-page');
+const buttonMainPage = document.querySelector('#button-main-page');
+const footerHTML = document.querySelector('footer');
 let pages = [];
 
 // --------открытие / закрытие меню
@@ -29,7 +35,7 @@ shadow.addEventListener('click', openCloseMenu);
 pages.push(mainPage);
 pages.push(pageСhoiceGame);
 pages.push(sectionGameSprint);
-
+pages.push(pageAudiocall);
 buttonMiniGames.addEventListener('click', function () {
     goToAnotherPage(pageСhoiceGame);
     openCloseMenu();
@@ -40,12 +46,34 @@ buttonSprintGame.addEventListener('click', async function () {
     goToAnotherPage(sectionGameSprint);
 });
 
+buttonGameAudiocall.addEventListener('click', async function () {
+    await getWordsAudio();
+    goToAnotherPage(pageAudiocall);
+});
+
+theCrossAudiocallPage.addEventListener('click', function () {
+    goToAnotherPage(pageСhoiceGame);
+    resetResultsAudiocall();
+});
+
 theCrossSprintPage.addEventListener('click', function () {
     goToAnotherPage(pageСhoiceGame);
     resetResults();
 });
 
+buttonMainPage.addEventListener('click', function () {
+    resetResultsAudiocall();
+    resetResults();
+    goToAnotherPage(mainPage);
+    openCloseMenu();
+});
+
 function goToAnotherPage(page) {
+    if (page === pageAudiocall || page === sectionGameSprint) {
+        footerHTML.style.display = 'none';
+    } else {
+        footerHTML.style.display = 'inherit';
+    }
     pages.forEach((element) => element.classList.add('hide-block'));
     page.classList.remove('hide-block');
 }

@@ -18,7 +18,7 @@ const areaResultSprint = document.querySelector('.area-result-sprint');
 const audioWrongAnswer = document.querySelector('#audio-wrong-answer');
 const audioRightAnswer = document.querySelector('#audio-right-answer');
 
-const TIME_TO_PLAY = 15;
+const TIME_TO_PLAY = 60;
 const PAGES_OF_WORDS = 30;
 let allWordsInLevel = [];
 let trueOrFalseAnswer;
@@ -70,7 +70,7 @@ function checkAnswer(answerFromUser) {
         audioRightAnswer.currentTime = 0;
         audioRightAnswer.play();
         numdersRightAnswers++;
-        addRightOrFalseAnswer(currentGuessWord, currentTranslateGuessWord, true, currentGuessAudio);
+        addRightOrFalseAnswer(currentGuessWord, currentTranslateGuessWord, true, currentGuessAudio, blockWithRightAnswers);
         areaGameSprint.classList.add('right-answer');
         changeScore();
         rightAnswersInRow++;
@@ -81,7 +81,7 @@ function checkAnswer(answerFromUser) {
         audioWrongAnswer.currentTime = 0;
         audioWrongAnswer.play();
         numbersWrongAnswers++;
-        addRightOrFalseAnswer(currentGuessWord, currentTranslateGuessWord, false, currentGuessAudio);
+        addRightOrFalseAnswer(currentGuessWord, currentTranslateGuessWord, false, currentGuessAudio, blockWithWrongAnswers);
         rightAnswersInRow = 0;
         coefficientOfGameHTML.innerHTML = 'X1';
         areaGameSprint.classList.add('false-answer');
@@ -143,16 +143,16 @@ window.addEventListener('keydown', function (e) {
     }
 });
 
-function addRightOrFalseAnswer(word, translate, rightOrFalse, idAudio) {
+function addRightOrFalseAnswer(word, translate, rightOrFalse, idAudio, block) {
     let answerHTML = `
     <div class="anwer-result">
         <img id="${idAudio}" class="img-listen-to-word" src="src/img/svg/sound.svg" alt="play">
         <div class="text-and-its-translate-sprint">${word} - ${translate}</div>
     </div>`;
     if (rightOrFalse) {
-        blockWithRightAnswers.insertAdjacentHTML('afterbegin', answerHTML);
+        block.insertAdjacentHTML('afterbegin', answerHTML);
     } else {
-        blockWithWrongAnswers.insertAdjacentHTML('afterbegin', answerHTML);
+        block.insertAdjacentHTML('afterbegin', answerHTML);
     }
 }
 
@@ -168,13 +168,15 @@ function endGameAndShowResult() {
     stopVictorineSprint();
 }
 
-blockOfAllAnswers.addEventListener('click', function (e) {
+blockOfAllAnswers.addEventListener('click', listenToWordResultsPage);
+
+function listenToWordResultsPage(e) {
     if (!e.target.classList.contains('img-listen-to-word')) {
         return;
     }
     let audio = new Audio(`https://react-learnwords-dima-hacker0.herokuapp.com/${e.target.id}`);
     audio.play();
-});
+}
 
 function resetResults() {
     allWordsInLevel = [];
@@ -197,4 +199,6 @@ function resetResults() {
     }
 }
 
-export { getAllWordsInLevelFromServ, resetResults };
+export {
+ getAllWordsInLevelFromServ, resetResults, addRightOrFalseAnswer, listenToWordResultsPage, createNewQuestion
+};

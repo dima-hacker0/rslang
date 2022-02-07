@@ -28,14 +28,13 @@
         </div>
         <nav class="navigation-section hide-navigation">
             <ul class="navigation-pages">
-                <li class="page-navigation">Главная</li>
+                <li id="button-main-page" class="page-navigation">Главная</li>
                 <li class="page-navigation">Учебник</li>
                 <li id="button-mini-games" class="page-navigation">Мини-игры</li>
                 <li class="page-navigation">Статистика</li>
                 <li class="page-navigation">О команде</li>
             </ul>
         </nav>
-        
     </header>
     <section class="main-page">
         <div class="container-start-page">
@@ -59,7 +58,7 @@
                     <div class="text-for-games-buttons">Спринт</div>
                     <img class="run-person" src="./img/svg/run-person.svg" alt="run-person">
                 </button>
-                <button class="button-min-games">
+                <button id="button-game-audiocall" class="button-min-games">
                     <div class="text-for-games-buttons">Аудиовызов</div>
                     <img class="sound-img" src="./img/svg/sound.svg" alt="sound">
                 </button>
@@ -77,9 +76,9 @@
             </div>
         </div>
     </section>
-
+   
     <section class="section-game-sprint hide-block">
-        <div class="game-area-sprint">
+        <div class="game-area-sprint"> 
             <div class="english-word-text">слово на англ</div>
             <div class="translate-word-text">перевод</div>
             <div class="block-buttons-true-false-sprint">
@@ -94,7 +93,7 @@
             <div class="time-sprint">60</div>
             <div class="coefficient-sprint-game">X1</div>
         </div>
- 
+    
         <div class="area-result-sprint hide-block">
             <h3 class="result-of-sprint">Ваш результат: 777 очков</h3>
             <div class="percent-right-answers-text">Процент правильных ответов: 77%</div>
@@ -110,21 +109,92 @@
                     </div>
                 </div>
             </div>
-
-     
         </div>
         <img class="the-cross-sprint-page" src="./img/svg/the-cross.svg" alt="cross">
+        <div class="instruction-sprint">Вы можете использовать ← → для управления</div>
     </section>
-
-
-    <footer class="footer">
+    
+    <section class="section-game-audiocall hide-block">
+        <div class="game-area-audiocall">
+            <div class="block-with-answer-audiocall hide-block">
+                <img src="https://react-learnwords-dima-hacker0.herokuapp.com/files/01_0002.jpg" class="img-answer-audiocall" alt="photo">
+                <div class="answer-word-on-english">englishhh</div>
+            </div> 
+            <div class="button-repeat-word-audiocall">
+                <img class="img-repeat-word-audiocall" src="./img/svg/sound.svg" alt="music">
+            </div>
+            <div class="block-response-options-audiocall">
+                <div id="button-answer-audiocall-1" class="response-option-audiocall">
+                    <div class="shell-number-response-audiocall">
+                        <div class="number-response-audiocall">1</div>
+                    </div> 
+                    <div id="word-audiocall-1" class="word-of-respone-audiocall">куплю челленджер</div>
+                </div> 
+                <div id="button-answer-audiocall-2" class="response-option-audiocall">
+                    <div class="shell-number-response-audiocall">
+                        <div class="number-response-audiocall">2</div>
+                    </div>
+                    <div id="word-audiocall-2" class="word-of-respone-audiocall">Дима</div>
+                </div>
+                <div id="button-answer-audiocall-3" class="response-option-audiocall">
+                    <div class="shell-number-response-audiocall">
+                        <div class="number-response-audiocall">3</div>
+                    </div>
+                    <div id="word-audiocall-3" class="word-of-respone-audiocall">хочу в епам</div>
+                </div>
+                <div id="button-answer-audiocall-4" class="response-option-audiocall">
+                    <div class="shell-number-response-audiocall">
+                        <div class="number-response-audiocall">4</div>
+                    </div>
+                    <div id="word-audiocall-4" class="word-of-respone-audiocall">дайте работу</div>
+                </div> 
+                <div id="button-answer-audiocall-5" class="response-option-audiocall">
+                    <div class="shell-number-response-audiocall">
+                        <div class="number-response-audiocall">5</div>
+                    </div>
+                    <div id="word-audiocall-5" class="word-of-respone-audiocall">нужны бабки</div>
+                </div>
+            </div>
+            <button class="button-next-world-audiocall">Не знаю</button>
+        </div>
+        <div class="area-result-audiocall hide-block">
+            <div class="percent-right-answers-text-audiocall">Процент правильных ответов: 77%</div>
+            <div class="area-with-right-and-wrong-answers-audiocall">
+                <div class="answers-wrond-right-audiocall">
+                    <div class="wrong-answers-audiocall">
+                        <h5 class="text-mistakes-audiocall">Ошибок: 1</h5>
+                        <div class="list-wrong-answers-audiocall"></div>
+                    </div>
+                    <div class="right-answers-audiocall">
+                        <h5 class="text-right-audiocall">Знаю: 1</h5>
+                        <div class="list-true-answers-audiocall"></div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div id="line-of-progress-audiocall" class="line-of-progress"></div>
+        <div class="guide-audiocall">Используйте клавиши 1, 2, 3, 4, 5 для ответа и &#8594; для перехода на следующий вопрос</div>
+        <img class="the-cross-audiocall-page" src="./img/svg/the-cross.svg" alt="cross">
+        <img id="full-screen-audiocall" class="full-screen" src="./img/svg/fullscreen.svg" alt="fullscreen">
+        <img style="display: none;" src="./img/svg/fullscreen-exit.svg" alt="">
+    </section>
+    <section class="section-registration">
+        <div class="container-registration">
+            <div class="buttons-registr-or-enter">
+                <button class="button-registration-account selected-button-registr">Войти</button>
+                <button class="button-log-in-account">Регистрация</button>
+            </div>
+            <img class="img-person-registration" src="./img/png/person.png" alt="person">
+        </div>
+    </section>
+    
+    <footer class="footer"> 
         <div class="container-footer">
                 <a class="rss-logo" href="https://rs.school/index.html"><img src="./img/svg/rs_school.svg" alt="logo"></a>
                 <div class="year-of-created">2022</div>
                 <a class="github-logo" href="https://github.com/dima-hacker0"><img class="img-github" src="./img/svg/github-logo.svg" alt="github"></a>
         </div>
     </footer>
-
     <div class="shadow" id="shadow"></div>
     <audio id="audio-wrong-answer" src="./mp3/zvuk-nevernogo-otveta.mp3"></audio>
     <audio id="audio-right-answer" src="./mp3/zvuk-pravilnogo-otveta.mp3"></audio>
