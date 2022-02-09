@@ -12,29 +12,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <title>rs-lang</title>
 </head>
-<body>
+<body> 
     <header class="header">
         <div class="container-header">
             <div class="left-side-header">
                 <div class="logo-rs-lang">RSLang</div>
             </div>
             <div class="right-side-header">
+                <div class="inforamtion-about-user hide-block">
+                    <div class="avatar-end-name-user">
+                        <img class="inforamtion-about-user-img" src="./img/png/person.png" alt="person">
+                        <div class="name-of-user">Димас</div>
+                    </div>
+                    <img title="Выйти из аккаунта" class="img-exit" src="./img/svg/svg-exit.svg" alt="exit">
+                </div> 
                 <div class="icon-nav">
                     <div class="line-nav first-line"></div>
                     <div class="line-nav second-line"></div>
                     <div class="line-nav third-line"></div>
-                </div>
+                </div> 
             </div>
         </div>
-        <nav class="navigation-section hide-navigation">
-            <ul class="navigation-pages">
-                <li id="button-main-page" class="page-navigation">Главная</li>
-                <li class="page-navigation">Учебник</li>
-                <li id="button-mini-games" class="page-navigation">Мини-игры</li>
-                <li class="page-navigation">Статистика</li>
-                <li class="page-navigation">О команде</li>
-            </ul>
-        </nav>
     </header>
     <section class="main-page">
         <div class="container-start-page">
@@ -93,7 +91,7 @@
             <div class="time-sprint">60</div>
             <div class="coefficient-sprint-game">X1</div>
         </div>
-    
+        
         <div class="area-result-sprint hide-block">
             <h3 class="result-of-sprint">Ваш результат: 777 очков</h3>
             <div class="percent-right-answers-text">Процент правильных ответов: 77%</div>
@@ -128,31 +126,31 @@
                     <div class="shell-number-response-audiocall">
                         <div class="number-response-audiocall">1</div>
                     </div> 
-                    <div id="word-audiocall-1" class="word-of-respone-audiocall">куплю челленджер</div>
+                    <div id="word-audiocall-1" class="word-of-respone-audiocall"></div>
                 </div> 
                 <div id="button-answer-audiocall-2" class="response-option-audiocall">
                     <div class="shell-number-response-audiocall">
                         <div class="number-response-audiocall">2</div>
                     </div>
-                    <div id="word-audiocall-2" class="word-of-respone-audiocall">Дима</div>
+                    <div id="word-audiocall-2" class="word-of-respone-audiocall"></div>
                 </div>
                 <div id="button-answer-audiocall-3" class="response-option-audiocall">
                     <div class="shell-number-response-audiocall">
                         <div class="number-response-audiocall">3</div>
                     </div>
-                    <div id="word-audiocall-3" class="word-of-respone-audiocall">хочу в епам</div>
+                    <div id="word-audiocall-3" class="word-of-respone-audiocall"></div>
                 </div>
                 <div id="button-answer-audiocall-4" class="response-option-audiocall">
                     <div class="shell-number-response-audiocall">
                         <div class="number-response-audiocall">4</div>
                     </div>
-                    <div id="word-audiocall-4" class="word-of-respone-audiocall">дайте работу</div>
+                    <div id="word-audiocall-4" class="word-of-respone-audiocall"></div>
                 </div> 
                 <div id="button-answer-audiocall-5" class="response-option-audiocall">
                     <div class="shell-number-response-audiocall">
                         <div class="number-response-audiocall">5</div>
                     </div>
-                    <div id="word-audiocall-5" class="word-of-respone-audiocall">нужны бабки</div>
+                    <div id="word-audiocall-5" class="word-of-respone-audiocall"></div>
                 </div>
             </div>
             <button class="button-next-world-audiocall">Не знаю</button>
@@ -178,16 +176,52 @@
         <img id="full-screen-audiocall" class="full-screen" src="./img/svg/fullscreen.svg" alt="fullscreen">
         <img style="display: none;" src="./img/svg/fullscreen-exit.svg" alt="">
     </section>
+
     <section class="section-registration">
-        <div class="container-registration">
-            <div class="buttons-registr-or-enter">
-                <button class="button-registration-account selected-button-registr">Войти</button>
-                <button class="button-log-in-account">Регистрация</button>
+        <div class="buttons-registr-or-enter">
+            <button class="button-log-in-account selected-button-registr">Войти</button>
+            <button class="button-registration-account">Регистрация</button>
+            <span class="chose-rigistration-page"></span>
+        </div>
+        <div class="container-registr-and-log-in">
+            <div class="container-log-in">
+                <div class="block-user-information-log-in"> 
+                    <img class="img-person-registration" src="./img/png/person.png" alt="person">
+                    <input class="input-email-log-in" placeholder="Почта" type="email">
+                    <input class="input-password-log-in" placeholder="Пароль" type="password">
+                    <p class="error-wrong-email-or-password hide-block">Неверная почта или пароль</p>
+                    <div class="buttons-back-or-log-in">
+                        <button class="button-back-registration-log-in">Назад</button>
+                        <button class="button-log-in-to-account">Вход</button>
+                    </div>
+                </div>
             </div>
-            <img class="img-person-registration" src="./img/png/person.png" alt="person">
+            <div class="container-registration">
+                <div class="button-add-photo">
+                    <img class="img-plus-add-photo" src="./img/png/person.png" alt="plus">
+                </div>
+                <input class="input-name-registration" placeholder="Имя" type="text">
+                <p class="text-error-name hide-block">Заполните это поле</p>
+                <input class="input-email-registration" placeholder="Почта" type="email">
+                <p class="text-error-email text-error-email-hide">электронная почта должна иметь форму username@example.com , где: username - имя пользователя, должно содержать от 3 до 15 символов (буквы, цифры, подчеркивания, дефисы), не должно содержать пробелов; example - домен первого уровня состоит не менее чем из 2 латинских букв; com - домен верхнего уровня, отделенный от домена первого уровня точкой и состоящий не менее чем из 2 латинских букв.</p>
+                <input class="input-password-registration" placeholder="Пароль" type="password">
+                <p class="text-error-password text-error-password-hide">Пароль должен содержать минимум 8 символов</p>
+                <div class="navigation-registration-buttons">
+                    <button class="button-back-registration-log-in">Назад</button>
+                    <button class="button-registration-to-account">Регистрация</button>
+                </div>
+            </div>
         </div>
     </section>
-    
+    <nav class="navigation-section hide-navigation">
+        <ul class="navigation-pages">
+            <li id="button-main-page" class="page-navigation">Главная</li>
+            <li class="page-navigation">Учебник</li>
+            <li id="button-mini-games" class="page-navigation">Мини-игры</li>
+            <li class="page-navigation">Статистика</li>
+            <li class="page-navigation">О команде</li>
+        </ul>
+    </nav>
     <footer class="footer"> 
         <div class="container-footer">
                 <a class="rss-logo" href="https://rs.school/index.html"><img src="./img/svg/rs_school.svg" alt="logo"></a>

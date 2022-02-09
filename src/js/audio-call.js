@@ -178,8 +178,6 @@ function resetResults() {
     }
 }
 
-// theCrossAudiocallPage.addEventListener('click', resetResults);
-
 function endGameAndShowResult() {
     victorineIsRunning = false;
     percentRightAnswersHTML.innerHTML = `Процент правильных ответов: ${numbersOfRightAnswer * 10}%`;

@@ -5,6 +5,10 @@
 }
 body {
   overflow-x: hidden;
+  position: relative;
+}
+input {
+  outline: none;
 }
 .container-header {
   padding: 12px 20px 12px 20px;
@@ -76,8 +80,8 @@ body {
   left: 100%;
   transition: 1s;
   z-index: 1;
-  bottom: 0;
-  transform: translate(-100%, 100%);
+  top: 65px;
+  transform: translate(-100%, 0%);
 }
 .navigation-pages li {
   list-style-type: none;
@@ -96,7 +100,7 @@ body {
   background-color: rgb(255, 255, 255, 0.4);
 }
 .hide-navigation {
-  transform: translate(0, 100%);
+  transform: translate(0, 0%);
 }
 .footer {
   background-color: #ce9c66;
@@ -178,7 +182,7 @@ body {
   color: white;
   font-size: 18px;
   cursor: pointer;
-  transition: 0.5s;
+  transition: 0.5s box-shadow;
 }
 .button-about-project:hover,
 .registration-button:hover {
@@ -604,9 +608,6 @@ body {
   margin-left: 10px;
   font-size: 20px;
 }
-.hide-block {
-  display: none;
-}
 .guide-audiocall {
   color: white;
   position: absolute;
@@ -624,16 +625,24 @@ body {
 }
 .section-registration {
   width: 400px;
-  height: 450px;
+  min-height: 450px;
   background-color: #fff;
   position: fixed;
   left: 50%;
-  top: 50%;
+  top: 0%;
+  transform: translate(-50%, -100%);
+  overflow-x: hidden;
+  /* transition: 1s; */
+  z-index: 1;
+}
+.section-registration-open {
   transform: translate(-50%, -50%);
+  top: 50%;
 }
 .buttons-registr-or-enter {
   display: flex;
   width: 100%;
+  position: relative;
 }
 .button-registration-account {
   color: #646664;
@@ -651,5 +660,179 @@ body {
 }
 .selected-button-registr {
   color: #48c2c4;
-  border-bottom: #48c2c4 3px solid;
+}
+.chose-rigistration-page {
+  position: absolute;
+  background-color: #48c2c4;
+  width: 50%;
+  left: 0;
+  height: 3px;
+  bottom: 0;
+  transition: 0.5s;
+}
+.img-person-registration {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #dbd7d2;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+.container-registration {
+  width: 50%;
+}
+.block-user-information-log-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input-email-log-in,
+.input-password-log-in,
+.input-name-registration,
+.input-email-registration,
+.input-password-registration {
+  width: 80%;
+  border: 0;
+  border-bottom: 2px solid #dbd7d2;
+  margin-top: 35px;
+  padding-bottom: 2px;
+}
+.buttons-back-or-log-in {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 35px;
+}
+.button-back-registration-log-in,
+.button-log-in-to-account,
+.button-registration-to-account {
+  width: 80px;
+  height: 30px;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.button-back-registration-log-in:hover,
+.button-log-in-to-account:hover {
+  box-shadow: 0px 0px 21px 6px rgb(0 0 0 / 25%);
+}
+.button-log-in-to-account,
+.button-registration-to-account {
+  background-color: #48c2c4;
+  color: white;
+}
+.button-back-registration-log-in {
+  background-color: #838383;
+  color: white;
+}
+.container-registration {
+  width: 400px;
+  min-height: 405px;
+  background-color: white;
+}
+.container-registr-and-log-in {
+  display: flex;
+  width: 800px;
+  transition: 1s;
+}
+.container-log-in {
+  width: 50%;
+}
+.button-add-photo {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #edebe8;
+  margin-top: 20px;
+}
+
+.img-plus-add-photo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+}
+.container-registration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.navigation-registration-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 45px;
+  padding-bottom: 20px;
+}
+.button-registration-to-account {
+  width: 100px;
+  transition: 0.5s;
+}
+.button-registration-to-account:hover {
+  box-shadow: 0px 0px 21px 6px rgb(0 0 0 / 25%);
+}
+.text-error-email {
+  width: 80%;
+  font-size: 8px;
+  color: #f57359;
+}
+.text-error-email-hide {
+  display: none;
+}
+.text-error-password {
+  width: 80%;
+  font-size: 8px;
+  color: #f57359;
+}
+.text-error-password-hide {
+  display: none;
+}
+.text-error-name {
+  color: #f57359;
+  font-size: 12px;
+}
+.error-wrong-email-or-password {
+  color: #f57359;
+  font-size: 12px;
+}
+.inforamtion-about-user {
+  display: flex;
+  margin-right: 15px;
+}
+.inforamtion-about-user-img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-bottom: -5px;
+}
+.right-side-header {
+  display: flex;
+  align-items: center;
+}
+.name-of-user {
+  color: white;
+}
+.img-exit {
+  transition: 0.1s;
+  cursor: pointer;
+  width: 30px;
+  filter: invert(100%) sepia(0%) saturate(7499%) hue-rotate(2deg)
+    brightness(94%) contrast(117%);
+}
+.img-exit:hover {
+  filter: invert(72%) sepia(39%) saturate(481%) hue-rotate(348deg)
+    brightness(85%) contrast(88%);
+}
+.avatar-end-name-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+}
+.hide-block {
+  display: none;
 }

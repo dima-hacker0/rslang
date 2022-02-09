@@ -1,5 +1,6 @@
 import { getAllWordsInLevelFromServ, resetResults } from './page-sprint';
 import { getAllWordsInLevelFromServ as getWordsAudio, resetResults as resetResultsAudiocall } from './audio-call';
+import { userIsLogged, logOutOfAccount } from './registration';
 
 const buttonMenu = document.querySelector('.icon-nav');
 const firstMenuLine = document.querySelector('.first-line');
@@ -18,6 +19,9 @@ const pageAudiocall = document.querySelector('.section-game-audiocall');
 const theCrossAudiocallPage = document.querySelector('.the-cross-audiocall-page');
 const buttonMainPage = document.querySelector('#button-main-page');
 const footerHTML = document.querySelector('footer');
+const registrationButtonMainPage = document.querySelector('.registration-button');
+const sectionRegistration = document.querySelector('.section-registration');
+const backRegistrationButtons = document.querySelectorAll('.button-back-registration-log-in');
 let pages = [];
 
 // --------открытие / закрытие меню
@@ -29,7 +33,7 @@ function openCloseMenu() {
     shadow.classList.toggle('shadow-on');
 }
 buttonMenu.addEventListener('click', openCloseMenu);
-shadow.addEventListener('click', openCloseMenu);
+// shadow.addEventListener('click', openCloseMenu);
 
 // ------------переход между секциями-----------
 pages.push(mainPage);
@@ -68,6 +72,26 @@ buttonMainPage.addEventListener('click', function () {
     openCloseMenu();
 });
 
+registrationButtonMainPage.addEventListener('click', function () {
+    if (userIsLogged) {
+        logOutOfAccount();
+        return;
+    }
+    sectionRegistration.classList.add('section-registration-open');
+    shadow.classList.add('shadow-on');
+    buttonMenu.style.zIndex = '0';
+});
+
+backRegistrationButtons.forEach((element) => {
+    element.addEventListener('click', closePageRegistration);
+});
+
+function closePageRegistration() {
+    shadow.classList.remove('shadow-on');
+    buttonMenu.style.zIndex = '1';
+    sectionRegistration.classList.remove('section-registration-open');
+}
+
 function goToAnotherPage(page) {
     if (page === pageAudiocall || page === sectionGameSprint) {
         footerHTML.style.display = 'none';
@@ -77,3 +101,4 @@ function goToAnotherPage(page) {
     pages.forEach((element) => element.classList.add('hide-block'));
     page.classList.remove('hide-block');
 }
+export { closePageRegistration };
