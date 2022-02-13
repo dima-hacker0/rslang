@@ -5,3 +5,6 @@ import './js/page-sprint';
 import './js/audio-call';
 import './js/full-screen';
 import './js/registration';
+import './js/textbook';
+import './js/add-update-delete-words';
+import './js/page-difficulty-words';

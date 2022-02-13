@@ -3,8 +3,6 @@ import { closePageRegistration } from './navigation';
 const buttonLogInPopap = document.querySelector('.button-log-in-account');
 const buttonRegistrationPopap = document.querySelector('.button-registration-account');
 const lineOfSelectPage = document.querySelector('.chose-rigistration-page');
-const containerLogIn = document.querySelector('.container-log-in');
-const containerRegistration = document.querySelector('.container-registration');
 const containerRegistrAndLogIn = document.querySelector('.container-registr-and-log-in');
 const inputEmailRegistration = document.querySelector('.input-email-registration');
 const textErrorEmail = document.querySelector('.text-error-email');
@@ -22,7 +20,6 @@ const inforamtionAboutUser = document.querySelector('.inforamtion-about-user');
 const registrationButton = document.querySelector('.registration-button');
 const buttonLogOut = document.querySelector('.img-exit');
 
-const arrInputsRegistration = [inputPasswordRegistration, inputNameRegistration, inputEmailRegistration];
 let userIsLogged = false;
 
 function changePagRegistrationPopap(page) {
@@ -117,7 +114,6 @@ async function logIntoAccount(objectEmailAndPassword) {
     const content = await rawResponse.json();
     localStorage.setItem('userInformation', JSON.stringify(content));
     logIntoAccountHTML(content.name);
-    console.log(content);
 }
 
 function logIntoAccountHTML(nameUser) {
@@ -133,13 +129,6 @@ window.onload = function () {
         logIntoAccountHTML(nameUser);
     }
 };
-
-// window.onload(function () {
-//     if (localStorage.getItem('userInformation') !== null) {
-//         let nameUser = JSON.parse(localStorage.getItem('userInformation')).name;
-//         logIntoAccountHTML(nameUser);
-//     }
-// });
 
 function logOutOfAccount() {
     userIsLogged = false;

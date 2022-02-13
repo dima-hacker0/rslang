@@ -17,7 +17,6 @@ const textMistakesAudioCall = document.querySelector('.text-mistakes-audiocall')
 const textRightAudioCall = document.querySelector('.text-right-audiocall');
 const areaResultAudiocall = document.querySelector('.area-result-audiocall');
 const gameAreaAudiocall = document.querySelector('.game-area-audiocall');
-const theCrossAudiocallPage = document.querySelector('.the-cross-audiocall-page');
 
 let allWordsInLevel = [];
 const PAGES_OF_WORDS = 30;

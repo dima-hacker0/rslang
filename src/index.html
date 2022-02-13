@@ -12,9 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <title>rs-lang</title>
 </head>
-<body> 
+<body>
     <header class="header">
-        <div class="container-header">
+        <div class="container-header max-width-section">
             <div class="left-side-header">
                 <div class="logo-rs-lang">RSLang</div>
             </div>
@@ -34,8 +34,8 @@
             </div>
         </div>
     </header>
-    <section class="main-page">
-        <div class="container-start-page">
+    <section class="main-page hide-block">
+        <div class="container-start-page max-width-section">
             <div class="first-start-column">
                 <div class="main-text-rslang">RSLang</div>
                 <div class="about-application">Приложение для эффективного изучения иностранных слов в игровой форме. Всегда под рукой. На любом устройстве</div>
@@ -49,7 +49,7 @@
         </div>
     </section>
     <section class="page-mini-games hide-block">
-        <div class="container-games-page">
+        <div class="container-games-page max-width-section">
             <div class="left-side-page-mimi-games">
                 <h2 class="text-choice-game">Выберите игру</h2>
                 <button id="button-game-sprint" class="button-min-games">
@@ -75,7 +75,7 @@
         </div>
     </section>
    
-    <section class="section-game-sprint hide-block">
+    <section class="section-game-sprint hide-block max-width-section">
         <div class="game-area-sprint"> 
             <div class="english-word-text">слово на англ</div>
             <div class="translate-word-text">перевод</div>
@@ -178,7 +178,7 @@
     </section>
 
     <section class="section-registration">
-        <div class="buttons-registr-or-enter">
+        <div class="buttons-registr-or-enter max-width-section">
             <button class="button-log-in-account selected-button-registr">Войти</button>
             <button class="button-registration-account">Регистрация</button>
             <span class="chose-rigistration-page"></span>
@@ -213,6 +213,94 @@
             </div>
         </div>
     </section>
+    <section class="textbook-section">
+        <div class="container-textbook-section max-width-section">
+            <div class="navigation-textbook">
+                <div class="button-page-textbook chosen-button-page-textbook">Учебник</div>
+                <!-- <span style="color: #2c2647; font-size: 30px;">|</span>
+                <div class="button-page-dictionary">Словарь</div> -->
+            </div>
+            <div class="textbook-block">
+                <div class="difficulty-level-textbook">
+                    <div id="button-difficulty-level-textbook-1" class="button-difficulty-level-textbook">
+                        <div id="circle-difficukty-button-1" class="circle-difficukty-button chousen-level-text-book hover-difficulty-level"></div>
+                        <div id="describe-level-difficulty-1" class="describe-level-difficulty chousen-level-text-book hover-difficulty-level">Easy</div>
+                        <div id="level-difficulty-textbook-1" class="level-difficulty-textbook chousen-level-text-book hover-difficulty-level">A1</div>
+                    </div>
+                    <div id="button-difficulty-level-textbook-2" class="button-difficulty-level-textbook">
+                        <div style="background-color: #9CD7F9" id="circle-difficukty-button-2" class="circle-difficukty-button hover-difficulty-level"></div>
+                        <div id="describe-level-difficulty-2" class="describe-level-difficulty hover-difficulty-level">Easy</div>
+                        <div id="level-difficulty-textbook-2" class="level-difficulty-textbook hover-difficulty-level">A2</div>
+                    </div>
+                    <div id="button-difficulty-level-textbook-3" class="button-difficulty-level-textbook">
+                        <div id="circle-difficukty-button-3" class="circle-difficukty-button circle-medium-difficulty hover-difficulty-level"></div>
+                        <div id="describe-level-difficulty-3" class="describe-level-difficulty hover-difficulty-level medium-level">Medium</div>
+                        <div id="level-difficulty-textbook-3" class="level-difficulty-textbook hover-difficulty-level">B1</div>
+                    </div>
+                    <div id="button-difficulty-level-textbook-4" class="button-difficulty-level-textbook">
+                        <div style="background-color: #FF7171" id="circle-difficukty-button-4" class="circle-difficukty-button circle-medium-difficulty hover-difficulty-level"></div>
+                        <div id="describe-level-difficulty-4" class="describe-level-difficulty hover-difficulty-level medium-level">Medium</div>
+                        <div id="level-difficulty-textbook-4" class="level-difficulty-textbook hover-difficulty-level">B2</div>
+                    </div>
+                    <div id="button-difficulty-level-textbook-5" class="button-difficulty-level-textbook">
+                        <div id="circle-difficukty-button-5" class="circle-difficukty-button circle-hard-difficulty hover-difficulty-level"></div>
+                        <div id="describe-level-difficulty-5" class="describe-level-difficulty hover-difficulty-level">Hard</div>
+                        <div id="level-difficulty-textbook-5" class="level-difficulty-textbook hover-difficulty-level">C1</div>
+                    </div>
+                    <div id="button-difficulty-level-textbook-6" class="button-difficulty-level-textbook">
+                        <div style="background-color: #8A78FA;" id="circle-difficukty-button-6" class="circle-difficukty-button circle-hard-difficulty hover-difficulty-level"></div>
+                        <div id="describe-level-difficulty-6" class="describe-level-difficulty hover-difficulty-level">Hard</div>
+                        <div id="level-difficulty-textbook-6" class="level-difficulty-textbook hover-difficulty-level">C2</div>
+                    </div>
+                    <div class="button-show-difficulty-words">
+                        <!-- <div style="background-color: #9CD7F9" id="circle-difficukty-button-2" class="circle-difficukty-button hover-difficulty-level"></div> -->
+                        <div class="text-button-difficult-words">Сложные слова</div>
+                        <!-- <div id="level-difficulty-textbook-2" class="level-difficulty-textbook hover-difficulty-level">A2</div> -->
+                    </div>
+                </div>
+                <div class="number-page-block"> 
+                    <img class="prev-page-button" src="./img/svg/prev-page-button.svg" alt="">
+                    <div class="number-page">1/30</div>
+                    <img class="next-page-button" src="./img/svg/next-page-button.svg" alt="">
+                </div>
+                <h2 class="heading-textbook-words">Слова</h1>
+                <div class="textbook-words-columns">
+                    <div class="textbook-words">
+                        <!-- <div class="card-textbook-word-translate">
+                            <div class="card-textbook-word">слово</div>
+                            <div>перевод</div>
+                            <div class="circle-chousen-word hide-block"></div>
+                        </div> -->
+                    </div>
+                    <div class="textbook-translate-img-example">
+                        <img class="img-textbook-main" src="https://react-learnwords-dima-hacker0.herokuapp.com/files/01_0002.jpg" alt="img">
+                        <div class="all-information-about-word">
+                            <div class="word-and-listening-button">
+                                <div class="word-on-english-textbook">Слово</div>
+                                <img class="button-listening-word-textbook" src="./img/svg/sound.svg" alt="sound">
+                            </div>
+                            <div class="translate-word-on-english-textbook">Перевод</div>
+                            <div class="transcription-textbook">транскрипция</div>
+                            <div class="block-diffucult-learned-buttons">
+                                <button class="add-difficult-words-textbook">Сложное слово</button>
+                                <button class="button-learned-word">Выученное слово</button>
+                            </div>
+                            <button class="button-remove-difficult-word hide-block">удалить сложное слово</button>
+                            <h3 class="meaning-word-heading">Значение</h3>
+                            <p id="meaning-word-example">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium voluptatum fuga quae officiis modi nulla similique inventor</p>
+                            <p id="meaning-word-example-translate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium voluptatum fuga quae officiis modi nulla similique inventor</p>
+                            <h3 class="meaning-word-heading">Пример</h3>
+                            <p id="example-use-word">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium voluptatum fuga quae officiis modi nulla similique inventor</p>
+                            <p id="example-use-word-translate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium voluptatum fuga quae officiis modi nulla similique inventor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dictionary-block hide-block">
+                <p>Димон</p>
+            </div>
+        </div> 
+    </section>
     <nav class="navigation-section hide-navigation">
         <ul class="navigation-pages">
             <li id="button-main-page" class="page-navigation">Главная</li>
@@ -223,7 +311,7 @@
         </ul>
     </nav>
     <footer class="footer"> 
-        <div class="container-footer">
+        <div class="container-footer max-width-section">
                 <a class="rss-logo" href="https://rs.school/index.html"><img src="./img/svg/rs_school.svg" alt="logo"></a>
                 <div class="year-of-created">2022</div>
                 <a class="github-logo" href="https://github.com/dima-hacker0"><img class="img-github" src="./img/svg/github-logo.svg" alt="github"></a>
@@ -232,5 +320,6 @@
     <div class="shadow" id="shadow"></div>
     <audio id="audio-wrong-answer" src="./mp3/zvuk-nevernogo-otveta.mp3"></audio>
     <audio id="audio-right-answer" src="./mp3/zvuk-pravilnogo-otveta.mp3"></audio>
+
 </body>
 </html>

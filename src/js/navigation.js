@@ -22,6 +22,7 @@ const footerHTML = document.querySelector('footer');
 const registrationButtonMainPage = document.querySelector('.registration-button');
 const sectionRegistration = document.querySelector('.section-registration');
 const backRegistrationButtons = document.querySelectorAll('.button-back-registration-log-in');
+
 let pages = [];
 
 // --------открытие / закрытие меню
@@ -33,13 +34,14 @@ function openCloseMenu() {
     shadow.classList.toggle('shadow-on');
 }
 buttonMenu.addEventListener('click', openCloseMenu);
-// shadow.addEventListener('click', openCloseMenu);
 
 // ------------переход между секциями-----------
+
 pages.push(mainPage);
 pages.push(pageСhoiceGame);
 pages.push(sectionGameSprint);
 pages.push(pageAudiocall);
+
 buttonMiniGames.addEventListener('click', function () {
     goToAnotherPage(pageСhoiceGame);
     openCloseMenu();
