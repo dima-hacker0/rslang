@@ -1,5 +1,9 @@
 import { levelOfEnglishLevel } from './page-choice-game';
 import { addRightOrFalseAnswer, listenToWordResultsPage } from './page-sprint';
+import { getWordsForMiniGames } from './page-sprint';
+import { updateStatisticsWord } from './statistics';
+import { createDataStatistic, getStatistics, addDataNewWord } from './statistics-day';
+
 const buttonRepeatWordAudiocall = document.querySelector('.button-repeat-word-audiocall');
 const blockResponseOptionsAudiocall = document.querySelector('.block-response-options-audiocall');
 const audioWrongAnswer = document.querySelector('#audio-wrong-answer');
@@ -17,6 +21,7 @@ const textMistakesAudioCall = document.querySelector('.text-mistakes-audiocall')
 const textRightAudioCall = document.querySelector('.text-right-audiocall');
 const areaResultAudiocall = document.querySelector('.area-result-audiocall');
 const gameAreaAudiocall = document.querySelector('.game-area-audiocall');
+const buttonStartAudiocallTextbook = document.querySelector('#button-start-audiocall-textbook');
 
 let allWordsInLevel = [];
 const PAGES_OF_WORDS = 30;
@@ -29,6 +34,8 @@ let translateGuessWord;
 let guessWord;
 let audioRightAnswerId;
 let victorineIsRunning = false;
+let idRightAnswerAudiocall;
+let rightAnswersInRow = 0;
 
 async function getAllWordsInLevelFromServ() {
     for (let i = 0; i < PAGES_OF_WORDS; i++) {
@@ -52,6 +59,7 @@ function createNewQuestion() {
         }
     }
     numberOfRightAnswer = Math.floor(Math.random() * 5 + 1);
+    idRightAnswerAudiocall = allWordsInLevel[arrayFiveRandomNumbers[numberOfRightAnswer - 1]].id;
     translateGuessWord = allWordsInLevel[arrayFiveRandomNumbers[numberOfRightAnswer - 1]].wordTranslate;
     audioRightAnswerId = allWordsInLevel[arrayFiveRandomNumbers[numberOfRightAnswer - 1]].audio;
     guessWord = allWordsInLevel[arrayFiveRandomNumbers[numberOfRightAnswer - 1]].word;
@@ -64,6 +72,7 @@ function createNewQuestion() {
     for (let i = 0; i < NUMBERS_OF_OPTIONS; i++) {
         document.querySelector(`#word-audiocall-${i + 1}`).innerHTML = allWordsInLevel[arrayFiveRandomNumbers[i]].wordTranslate;
     }
+    allWordsInLevel.splice(arrayFiveRandomNumbers[numberOfRightAnswer - 1], 1);
 }
 
 blockResponseOptionsAudiocall.addEventListener('click', function (e) {
@@ -76,23 +85,36 @@ blockResponseOptionsAudiocall.addEventListener('click', function (e) {
     showOrHideImgAndWord('show');
 });
 
-function checkRightOrWrongAnswer(numberAnswerFromUser) {
+async function checkRightOrWrongAnswer(numberAnswerFromUser) {
+    let statistics = JSON.parse(JSON.stringify(await getStatistics()));
+    statistics = statistics.optional;
+    statistics.audiocallAnswers++;
     let buttonClickedUser = document.querySelector(`#button-answer-audiocall-${numberAnswerFromUser}`);
     let buttonRightAnswer = document.querySelector(`#button-answer-audiocall-${numberOfRightAnswer}`);
     buttonNextWorldAudiocall.innerHTML = 'Дальше';
     if (numberAnswerFromUser === numberOfRightAnswer) {
+        rightAnswersInRow++;
+        if (rightAnswersInRow > statistics.rightAnswersInRowAudiocall) {
+            statistics.rightAnswersInRowAudiocall = rightAnswersInRow;
+        }
+        statistics.audiocallRightAnswers++;
         addRightOrFalseAnswer(guessWord, translateGuessWord, true, audioRightAnswerId, rightAnwersAudiocall);
         audioRightAnswer.play();
+        await updateStatisticsWord(idRightAnswerAudiocall, 'audiocall', true);
         numbersOfRightAnswer++;
     } else {
+        rightAnswersInRow = 0;
         addRightOrFalseAnswer(guessWord, translateGuessWord, false, audioRightAnswerId, wrongAnwersAudiocall);
         buttonClickedUser.classList.add('false-answer-audiocall');
         audioWrongAnswer.play();
+        await updateStatisticsWord(idRightAnswerAudiocall, 'audiocall', false);
         numbersOfWrongAnswer++;
     }
     let numbersOfAnswers = numbersOfRightAnswer + numbersOfWrongAnswer;
     lineOfProgress.style.background = `-webkit-linear-gradient(left, #00bf97 0%, #00bf97 ${numbersOfAnswers * 10}%, #fff ${numbersOfAnswers * 10}%, #fff 100%)`;
     buttonRightAnswer.classList.add('right-answer-audiocall');
+    createDataStatistic({ optional: statistics });
+    addDataNewWord(idRightAnswerAudiocall);
 }
 
 function showOrHideImgAndWord() {
@@ -120,6 +142,7 @@ function iDontNowAnswerOrnextQuestion() {
             endGameAndShowResult();
         }
     } else {
+        updateStatisticsWord(idRightAnswerAudiocall, 'audiocall', false);
         numbersOfWrongAnswer++;
         addRightOrFalseAnswer(guessWord, translateGuessWord, false, audioRightAnswerId, wrongAnwersAudiocall);
         lineOfProgress.style.background = `-webkit-linear-gradient(left, #00bf97 0%, #00bf97 ${(numbersOfWrongAnswer + numbersOfRightAnswer) * 10}%, #fff ${(numbersOfWrongAnswer + numbersOfRightAnswer) * 10}%, #fff 100%)`;
@@ -161,12 +184,20 @@ window.addEventListener('keydown', function (e) {
 });
 
 function resetResults() {
+    for (let i = 1; i < NUMBERS_OF_OPTIONS + 1; i++) {
+        let buttonOptionGame = document.querySelector(`#button-answer-audiocall-${i}`);
+        buttonOptionGame.classList.remove('right-answer-audiocall');
+        buttonOptionGame.classList.remove('false-answer-audiocall');
+    }
+    buttonRepeatWordAudiocall.classList.remove('button-repeat-word-audiocall-open-answer');
+    blockWithAnswerAudiocall.classList.add('hide-block');
     victorineIsRunning = false;
     lineOfProgress.style.background = '-webkit-linear-gradient(left, #00bf97 0%, #00bf97 0%, #fff 0%, #fff 100%)';
     allWordsInLevel = [];
     thereIsAnswer = false;
     numbersOfRightAnswer = 0;
     numbersOfWrongAnswer = 0;
+    rightAnswersInRow = 0;
     areaResultAudiocall.classList.add('hide-block');
     gameAreaAudiocall.classList.remove('hide-block');
     while (wrongAnwersAudiocall.firstChild) {
@@ -187,4 +218,12 @@ function endGameAndShowResult() {
 }
 buttonNextWorldAudiocall.addEventListener('click', iDontNowAnswerOrnextQuestion);
 blockOfAllAnswers.addEventListener('click', listenToWordResultsPage);
+
+buttonStartAudiocallTextbook.addEventListener('click', async function () {
+    const words = await getWordsForMiniGames();
+    allWordsInLevel = words;
+    victorineIsRunning = true;
+    createNewQuestion();
+});
+
 export { getAllWordsInLevelFromServ, resetResults };

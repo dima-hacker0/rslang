@@ -970,6 +970,7 @@ input {
 .textbook-words {
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
 }
 .heading-textbook-words {
   font-size: 35px;
@@ -1112,4 +1113,107 @@ input {
 }
 .hide-block {
   display: none;
+}
+.block-statistics-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+.block-words-mini-games-statistics {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.neme-mini-game-statistics-textbook {
+  color: white;
+  background-color: black;
+  border-radius: 47px;
+  width: 119px;
+  text-align: center;
+  height: 29px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.block-buttons-play-mini-games {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.button-play-mimi-game-textbook {
+  width: 45%;
+  border: 0;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  height: 30px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.button-play-mimi-game-textbook:hover {
+  box-shadow: 0px 0px 21px 6px rgb(0 0 0 / 25%);
+}
+.section-statistics {
+  min-height: calc(100vh - 120px);
+  background-color: #dcd8d2;
+}
+.statistics-container {
+  padding: 10px;
+  box-sizing: border-box;
+}
+.heading-statistics {
+  color: white;
+  font-size: 40px;
+}
+.block-statistics {
+  display: flex;
+  justify-content: center;
+}
+.block-learned-words,
+.block-percent-right-answers {
+  text-align: center;
+}
+.main-number-statistics {
+  color: white;
+  font-size: 70px;
+  font-weight: 600;
+}
+.main-number-statistics-text {
+  color: white;
+  font-size: 18px;
+  margin-top: -15px;
+}
+.block-learned-words,
+.block-percent-right-answers {
+  margin: 0 10px;
+}
+.block-statistics-games {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+.block-statistics-sprint__item,
+.block-statistics-audiocall__item {
+  color: white;
+  border-bottom: 2px solid white;
+  margin-bottom: 5px;
+}
+.block-statistics-sprint,
+.block-statistics-audiocall {
+  background-color: #ce9c66;
+  width: 300px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin: 0 10px;
+}
+.name-game-statistics {
+  color: white;
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+.block-new-words {
+  text-align: center;
 }

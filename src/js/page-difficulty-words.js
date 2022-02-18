@@ -1,4 +1,5 @@
 import { addCardsOnPage } from './textbook';
+import { token, userId } from './statistics-day';
 
 const buttonShowDifficultyWords = document.querySelector('.button-show-difficulty-words');
 const textButtonDifficultwords = document.querySelector('.text-button-difficult-words');
@@ -6,8 +7,6 @@ const blockDiffucultLearnedButtons = document.querySelector('.block-diffucult-le
 const buttonRemoveDifficultWord = document.querySelector('.button-remove-difficult-word');
 const numberPageBlock = document.querySelector('.number-page-block');
 
-let token = JSON.parse(localStorage.getItem('userInformation')).token;
-let userId = JSON.parse(localStorage.getItem('userInformation')).userId;
 const NUMBERS_DIFFICULTY_LEVELS = 6;
 
 const NUMBER_PAGE_DIFFICULTY_WORDS = 7;

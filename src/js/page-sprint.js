@@ -1,4 +1,9 @@
 import { levelOfEnglishLevel } from './page-choice-game';
+import { currentTextBookPage, currentDifficultyLevel } from './textbook';
+import { goToAnotherPage } from './navigation';
+import { updateStatisticsWord } from './statistics';
+import { createDataStatistic, getStatistics, addDataNewWord } from './statistics-day';
+
 const areaGameSprint = document.querySelector('.game-area-sprint');
 const falseButton = document.querySelector('.false-button-sprint');
 const trueButton = document.querySelector('.true-button-sprint');
@@ -17,6 +22,10 @@ const blockOfAllAnswers = document.querySelector('.area-with-right-and-wrong-ans
 const areaResultSprint = document.querySelector('.area-result-sprint');
 const audioWrongAnswer = document.querySelector('#audio-wrong-answer');
 const audioRightAnswer = document.querySelector('#audio-right-answer');
+const buttonStartSprintTextbook = document.querySelector('#button-start-sprint-textbook');
+const sectionGameSprint = document.querySelector('.section-game-sprint');
+const buttonSprintGame = document.querySelector('#button-game-sprint');
+const theCrossSprintPage = document.querySelector('.the-cross-sprint-page');
 
 const TIME_TO_PLAY = 60;
 const PAGES_OF_WORDS = 30;
@@ -31,6 +40,7 @@ let currentGuessAudio;
 let numdersRightAnswers = 0;
 let numbersWrongAnswers = 0;
 let timer;
+let currentGuessObject;
 
 async function getAllWordsInLevelFromServ() {
     for (let i = 0; i < PAGES_OF_WORDS; i++) {
@@ -40,13 +50,14 @@ async function getAllWordsInLevelFromServ() {
         const words = await rawResponse.json();
         allWordsInLevel = [...allWordsInLevel, ...words];
     }
-    sprintIsRunning = true;
-    startStopTimer();
-    createNewQuestion();
 }
 
-function createNewQuestion() {
+async function createNewQuestion() {
+    if (allWordsInLevel.length === 1) {
+        await getAllWordsInLevelFromServ();
+    }
     const randomWordsNumber = Math.floor(Math.random() * (allWordsInLevel.length - 1));
+    currentGuessObject = { ...allWordsInLevel[randomWordsNumber] };
     trueOrFalseAnswer = Math.floor(Math.random() * 2);
     englishWordHTML.innerHTML = allWordsInLevel[randomWordsNumber].word;
     currentGuessWord = allWordsInLevel[randomWordsNumber].word;
@@ -56,17 +67,22 @@ function createNewQuestion() {
     if (trueOrFalseAnswer === 0) {
         translateWordHTML.innerHTML = allWordsInLevel[randomWordsNumber].wordTranslate;
     } else {
-        numberFalseTranslate = Math.floor(Math.random() * (allWordsInLevel.length - 1));
+        numberFalseTranslate = Math.floor(Math.random() * (allWordsInLevel.length));
         while (numberFalseTranslate === randomWordsNumber) {
-            numberFalseTranslate = Math.floor(Math.random() * (allWordsInLevel.length - 1));
+            numberFalseTranslate = Math.floor(Math.random() * (allWordsInLevel.length));
         }
         translateWordHTML.innerHTML = allWordsInLevel[numberFalseTranslate].wordTranslate;
     }
     allWordsInLevel.splice(randomWordsNumber, 1);
 }
 
-function checkAnswer(answerFromUser) {
+async function checkAnswer(answerFromUser) {
+    let statistics = JSON.parse(JSON.stringify(await getStatistics()));
+    statistics = statistics.optional;
+    statistics.sprintAnswers++;
     if (answerFromUser === trueOrFalseAnswer) {
+        statistics.sprintRightAnswers++;
+        updateStatisticsWord(currentGuessObject.id, 'sprint', true);
         audioRightAnswer.currentTime = 0;
         audioRightAnswer.play();
         numdersRightAnswers++;
@@ -74,10 +90,14 @@ function checkAnswer(answerFromUser) {
         areaGameSprint.classList.add('right-answer');
         changeScore();
         rightAnswersInRow++;
+        if (rightAnswersInRow > statistics.rightAnswersInRowSprint) {
+            statistics.rightAnswersInRowSprint = rightAnswersInRow;
+        }
         setTimeout(function () {
             areaGameSprint.classList.remove('right-answer');
         }, 500);
     } else {
+        updateStatisticsWord(currentGuessObject.id, 'sprint', false);
         audioWrongAnswer.currentTime = 0;
         audioWrongAnswer.play();
         numbersWrongAnswers++;
@@ -90,6 +110,8 @@ function checkAnswer(answerFromUser) {
         }, 500);
     }
     createNewQuestion();
+    createDataStatistic({ optional: statistics });
+    addDataNewWord(currentGuessObject.id);
 }
 
 falseButton.addEventListener('click', function () {
@@ -98,10 +120,6 @@ falseButton.addEventListener('click', function () {
 trueButton.addEventListener('click', function () {
     checkAnswer(0);
 });
-
-function stopVictorineSprint() {
-    sprintIsRunning = false;
-}
 
 function changeScore() {
     if (rightAnswersInRow >= 0 && rightAnswersInRow < 3) {
@@ -125,7 +143,6 @@ function startStopTimer() {
     timer = setInterval(() => {
         currentGameTime--;
         if (currentGameTime === 0) {
-            clearInterval(timer);
             endGameAndShowResult();
         }
         timerHTML.innerHTML = currentGameTime;
@@ -133,9 +150,7 @@ function startStopTimer() {
 }
 
 window.addEventListener('keydown', function (e) {
-    if (!sprintIsRunning) {
-        return;
-    }
+    if (!sprintIsRunning) return;
     if (e.key === 'ArrowLeft') {
         checkAnswer(1);
     } else if (e.key === 'ArrowRight') {
@@ -157,6 +172,7 @@ function addRightOrFalseAnswer(word, translate, rightOrFalse, idAudio, block) {
 }
 
 function endGameAndShowResult() {
+    clearInterval(timer);
     resultOfSprintHTML.innerHTML = `Ваш результат: ${scoreGameSprint} очков`;
     let perscentRightAnswers = Math.ceil((numdersRightAnswers / (numdersRightAnswers + numbersWrongAnswers)) * 100);
     if (Number.isNaN(perscentRightAnswers)) perscentRightAnswers = 0;
@@ -165,10 +181,8 @@ function endGameAndShowResult() {
     numbersRightAnswerssHTML.innerHTML = `Знаю: ${numdersRightAnswers}`;
     areaResultSprint.classList.remove('hide-block');
     areaGameSprint.classList.add('hide-block');
-    stopVictorineSprint();
+    sprintIsRunning = false;
 }
-
-blockOfAllAnswers.addEventListener('click', listenToWordResultsPage);
 
 function listenToWordResultsPage(e) {
     if (!e.target.classList.contains('img-listen-to-word')) {
@@ -199,6 +213,33 @@ function resetResults() {
     }
 }
 
+async function getWordsForMiniGames() {
+    const rawResponse = await fetch(`https://react-learnwords-dima-hacker0.herokuapp.com/words?page=${currentTextBookPage - 1}&group=${currentDifficultyLevel - 1}`, {
+        method: 'GET'
+    });
+    const words = await rawResponse.json();
+    return words;
+}
+
+buttonSprintGame.addEventListener('click', async function () {
+    await getAllWordsInLevelFromServ();
+    goToAnotherPage(sectionGameSprint);
+    theCrossSprintPage.setAttribute('data-frompage', 'page-choice-game');
+    sprintIsRunning = true;
+    startStopTimer();
+    createNewQuestion();
+});
+
+buttonStartSprintTextbook.addEventListener('click', async function () {
+    let gameWords = await getWordsForMiniGames();
+    allWordsInLevel = [...gameWords];
+    startStopTimer();
+    createNewQuestion();
+    sprintIsRunning = true;
+});
+
+blockOfAllAnswers.addEventListener('click', listenToWordResultsPage);
+
 export {
- getAllWordsInLevelFromServ, resetResults, addRightOrFalseAnswer, listenToWordResultsPage, createNewQuestion
+ getAllWordsInLevelFromServ, resetResults, addRightOrFalseAnswer, listenToWordResultsPage, createNewQuestion, getWordsForMiniGames
 };

@@ -1,3 +1,6 @@
+import { addInformationHTML } from './statistics';
+import { token, userId } from './statistics-day';
+import { getWordInformation } from './add-update-delete-words';
 const difficultyLevelTextbook = document.querySelector('.difficulty-level-textbook');
 const blockTextbookWords = document.querySelector('.textbook-words');
 const prevPageButton = document.querySelector('.prev-page-button');
@@ -20,14 +23,13 @@ const buttonRemoveDifficultWord = document.querySelector('.button-remove-difficu
 const numberPageBlock = document.querySelector('.number-page-block');
 
 const NUMBERS_DIFFICULTY_LEVELS = 6;
-const NUMBERS_CARDS = 20;
+let currentCardId;
 let currentTextBookPage = 1;
 let currentDifficultyLevel = 1;
 let currentNumberCard = 1;
 let colorsButton = ['#66ccce', '#9CD7F9', '#ce6698', '#FF7171', '#ce9c66', '#8A78FA', '#2c2647'];
-let token = JSON.parse(localStorage.getItem('userInformation')).token;
-let userId = JSON.parse(localStorage.getItem('userInformation')).userId;
 let pageIsLoaded = true;
+let numbersWords;
 
 async function getInformationFromServer(levelDifficulty, numberPage) {
     const rawResponse = await fetch(`https://react-learnwords-dima-hacker0.herokuapp.com/words?page=${numberPage}&group=${levelDifficulty}`, {
@@ -62,6 +64,7 @@ changeLevelDifficulty(1);
 async function addCardsOnPage(numberDifficulty, words) {
     pageIsLoaded = false;
     let arrId = [];
+    numbersWords = words.length;
     for (let i = 0; i < words.length; i++) {
         if (words[i].id === undefined) {
             arrId[i] = words[i]._id;
@@ -107,14 +110,13 @@ async function addCardsOnPage(numberDifficulty, words) {
 
 async function pickCard(numberCard) {
     currentNumberCard = numberCard;
-    for (let i = 1; i < NUMBERS_CARDS + 1; i++) {
+    for (let i = 1; i < numbersWords + 1; i++) {
         document.querySelector(`#circle-chousen-word-${i}`).classList.add('hide-circle');
     }
     document.querySelector(`#circle-chousen-word-${numberCard}`).classList.remove('hide-circle');
-
     const cardHTML = document.querySelector(`#card-textbook-word-translate-${numberCard}`);
     const cardId = cardHTML.classList[1];
-
+    addInformationHTML(cardId);
     const rawResponse = await fetch(`https://react-learnwords-dima-hacker0.herokuapp.com/words/${cardId}`, {
         method: 'GET'
     });
@@ -227,4 +229,6 @@ nextPageButton.addEventListener('click', async function () {
     await addCardsOnPage(currentDifficultyLevel, words);
 });
 
-export { currentNumberCard, addCardsOnPage };
+export {
+ currentNumberCard, addCardsOnPage, currentDifficultyLevel, currentTextBookPage, currentCardId
+};

@@ -8,3 +8,5 @@ import './js/registration';
 import './js/textbook';
 import './js/add-update-delete-words';
 import './js/page-difficulty-words';
+import './js/statistics';
+import './js/statistics-day';

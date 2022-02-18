@@ -1,4 +1,5 @@
 import { closePageRegistration } from './navigation';
+import { createDataStatistic, updateTodayData, updateToken } from './statistics-day';
 
 const buttonLogInPopap = document.querySelector('.button-log-in-account');
 const buttonRegistrationPopap = document.querySelector('.button-registration-account');
@@ -96,6 +97,7 @@ async function registration() {
         inputEmailRegistration.style.borderBottom = '2px solid #f57359';
         return;
     }
+    // createDataStatistic();
     logIntoAccount(user);
 }
 
@@ -114,6 +116,8 @@ async function logIntoAccount(objectEmailAndPassword) {
     const content = await rawResponse.json();
     localStorage.setItem('userInformation', JSON.stringify(content));
     logIntoAccountHTML(content.name);
+    updateToken();
+    updateTodayData();
 }
 
 function logIntoAccountHTML(nameUser) {

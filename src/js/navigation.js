@@ -1,4 +1,4 @@
-import { getAllWordsInLevelFromServ, resetResults } from './page-sprint';
+import { resetResults } from './page-sprint';
 import { getAllWordsInLevelFromServ as getWordsAudio, resetResults as resetResultsAudiocall } from './audio-call';
 import { userIsLogged, logOutOfAccount } from './registration';
 
@@ -11,7 +11,6 @@ const sectionNavigation = document.querySelector('.navigation-section');
 const buttonMiniGames = document.querySelector('#button-mini-games');
 const mainPage = document.querySelector('.main-page');
 const pageСhoiceGame = document.querySelector('.page-mini-games');
-const buttonSprintGame = document.querySelector('#button-game-sprint');
 const sectionGameSprint = document.querySelector('.section-game-sprint');
 const theCrossSprintPage = document.querySelector('.the-cross-sprint-page');
 const buttonGameAudiocall = document.querySelector('#button-game-audiocall');
@@ -22,6 +21,12 @@ const footerHTML = document.querySelector('footer');
 const registrationButtonMainPage = document.querySelector('.registration-button');
 const sectionRegistration = document.querySelector('.section-registration');
 const backRegistrationButtons = document.querySelectorAll('.button-back-registration-log-in');
+const buttonStartSprintTextbook = document.querySelector('#button-start-sprint-textbook');
+const textbookSection = document.querySelector('.textbook-section');
+const buttonStartAudiocallTextbook = document.querySelector('#button-start-audiocall-textbook');
+const buttonToTextbook = document.querySelector('#button-to-textbook');
+const sectionStatistics = document.querySelector('.section-statistics');
+const buttonToPageStatistics = document.querySelector('#button-to-page-statistics');
 
 let pages = [];
 
@@ -41,29 +46,55 @@ pages.push(mainPage);
 pages.push(pageСhoiceGame);
 pages.push(sectionGameSprint);
 pages.push(pageAudiocall);
+pages.push(textbookSection);
+pages.push(sectionStatistics);
+
+buttonToPageStatistics.addEventListener('click', function () {
+    goToAnotherPage(sectionStatistics);
+    openCloseMenu();
+});
+
+buttonToTextbook.addEventListener('click', function () {
+    goToAnotherPage(textbookSection);
+    openCloseMenu();
+});
+
+buttonStartAudiocallTextbook.addEventListener('click', function () {
+    theCrossAudiocallPage.setAttribute('data-pagefrom', 'textbook');
+    goToAnotherPage(pageAudiocall);
+});
 
 buttonMiniGames.addEventListener('click', function () {
     goToAnotherPage(pageСhoiceGame);
     openCloseMenu();
 });
 
-buttonSprintGame.addEventListener('click', async function () {
-    await getAllWordsInLevelFromServ();
+buttonStartSprintTextbook.addEventListener('click', function () {
     goToAnotherPage(sectionGameSprint);
+    theCrossSprintPage.setAttribute('data-frompage', 'textbook');
 });
 
 buttonGameAudiocall.addEventListener('click', async function () {
+    theCrossAudiocallPage.setAttribute('data-pagefrom', 'page-mini-games');
     await getWordsAudio();
     goToAnotherPage(pageAudiocall);
 });
 
 theCrossAudiocallPage.addEventListener('click', function () {
-    goToAnotherPage(pageСhoiceGame);
+    if (theCrossAudiocallPage.getAttribute('data-pagefrom') === 'page-mini-games') {
+        goToAnotherPage(pageСhoiceGame);
+    } else {
+        goToAnotherPage(textbookSection);
+    }
     resetResultsAudiocall();
 });
 
 theCrossSprintPage.addEventListener('click', function () {
-    goToAnotherPage(pageСhoiceGame);
+    if (this.getAttribute('data-frompage') === 'textbook') {
+        goToAnotherPage(textbookSection);
+    } else {
+        goToAnotherPage(pageСhoiceGame);
+    }
     resetResults();
 });
 
@@ -103,4 +134,4 @@ function goToAnotherPage(page) {
     pages.forEach((element) => element.classList.add('hide-block'));
     page.classList.remove('hide-block');
 }
-export { closePageRegistration };
+export { closePageRegistration, goToAnotherPage };

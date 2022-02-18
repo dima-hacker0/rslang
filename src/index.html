@@ -91,7 +91,7 @@
             <div class="time-sprint">60</div>
             <div class="coefficient-sprint-game">X1</div>
         </div>
-        
+ 
         <div class="area-result-sprint hide-block">
             <h3 class="result-of-sprint">Ваш результат: 777 очков</h3>
             <div class="percent-right-answers-text">Процент правильных ответов: 77%</div>
@@ -117,7 +117,7 @@
             <div class="block-with-answer-audiocall hide-block">
                 <img src="https://react-learnwords-dima-hacker0.herokuapp.com/files/01_0002.jpg" class="img-answer-audiocall" alt="photo">
                 <div class="answer-word-on-english">englishhh</div>
-            </div> 
+            </div>
             <div class="button-repeat-word-audiocall">
                 <img class="img-repeat-word-audiocall" src="./img/svg/sound.svg" alt="music">
             </div>
@@ -125,9 +125,9 @@
                 <div id="button-answer-audiocall-1" class="response-option-audiocall">
                     <div class="shell-number-response-audiocall">
                         <div class="number-response-audiocall">1</div>
-                    </div> 
+                    </div>
                     <div id="word-audiocall-1" class="word-of-respone-audiocall"></div>
-                </div> 
+                </div>
                 <div id="button-answer-audiocall-2" class="response-option-audiocall">
                     <div class="shell-number-response-audiocall">
                         <div class="number-response-audiocall">2</div>
@@ -213,12 +213,10 @@
             </div>
         </div>
     </section>
-    <section class="textbook-section">
+    <section class="textbook-section hide-block">
         <div class="container-textbook-section max-width-section">
             <div class="navigation-textbook">
                 <div class="button-page-textbook chosen-button-page-textbook">Учебник</div>
-                <!-- <span style="color: #2c2647; font-size: 30px;">|</span>
-                <div class="button-page-dictionary">Словарь</div> -->
             </div>
             <div class="textbook-block">
                 <div class="difficulty-level-textbook">
@@ -253,9 +251,7 @@
                         <div id="level-difficulty-textbook-6" class="level-difficulty-textbook hover-difficulty-level">C2</div>
                     </div>
                     <div class="button-show-difficulty-words">
-                        <!-- <div style="background-color: #9CD7F9" id="circle-difficukty-button-2" class="circle-difficukty-button hover-difficulty-level"></div> -->
                         <div class="text-button-difficult-words">Сложные слова</div>
-                        <!-- <div id="level-difficulty-textbook-2" class="level-difficulty-textbook hover-difficulty-level">A2</div> -->
                     </div>
                 </div>
                 <div class="number-page-block"> 
@@ -266,11 +262,6 @@
                 <h2 class="heading-textbook-words">Слова</h1>
                 <div class="textbook-words-columns">
                     <div class="textbook-words">
-                        <!-- <div class="card-textbook-word-translate">
-                            <div class="card-textbook-word">слово</div>
-                            <div>перевод</div>
-                            <div class="circle-chousen-word hide-block"></div>
-                        </div> -->
                     </div>
                     <div class="textbook-translate-img-example">
                         <img class="img-textbook-main" src="https://react-learnwords-dima-hacker0.herokuapp.com/files/01_0002.jpg" alt="img">
@@ -285,28 +276,73 @@
                                 <button class="add-difficult-words-textbook">Сложное слово</button>
                                 <button class="button-learned-word">Выученное слово</button>
                             </div>
-                            <button class="button-remove-difficult-word hide-block">удалить сложное слово</button>
+                            <button class="button-remove-difficult-word hide-block">удалить из сложных</button>
                             <h3 class="meaning-word-heading">Значение</h3>
                             <p id="meaning-word-example">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium voluptatum fuga quae officiis modi nulla similique inventor</p>
                             <p id="meaning-word-example-translate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium voluptatum fuga quae officiis modi nulla similique inventor</p>
                             <h3 class="meaning-word-heading">Пример</h3>
                             <p id="example-use-word">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium voluptatum fuga quae officiis modi nulla similique inventor</p>
                             <p id="example-use-word-translate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium voluptatum fuga quae officiis modi nulla similique inventor</p>
+                            <h3 class="meaning-word-heading">Ответы в играх</h3>
+                            <div class="block-words-mini-games-statistics">
+                                <div class="block-statistics-game">
+                                    <div class="neme-mini-game-statistics-textbook">Спринт</div>
+                                    <div id="score-sprint-textbook">0</div>
+                                </div>
+                                <div class="block-statistics-game">
+                                    <div class="neme-mini-game-statistics-textbook">Аудиовызов</div>
+                                    <div id="score-audiocall-textbook">0</div>
+                                </div>
+                            </div>
+                            <div class="block-buttons-play-mini-games">
+                                <button id="button-start-sprint-textbook" class="button-play-mimi-game-textbook">Играть спринт</button>
+                                <button id="button-start-audiocall-textbook" class="button-play-mimi-game-textbook">Играть Аудиовызов</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="dictionary-block hide-block">
-                <p>Димон</p>
-            </div>
         </div> 
+    </section>
+    <section class="section-statistics">
+        <div class="statistics-container max-width-section">
+            <h3 class="heading-statistics">Статистика</h3>
+            <div class="block-statistics">
+                <div class="block-learned-words">
+                    <div id="main-number-statistics-learned" class="main-number-statistics">0</div>
+                    <div class="main-number-statistics-text">Слов изучено</div>
+                </div>
+                <div class="block-percent-right-answers">
+                    <div id="main-number-statistics-percent-right" class="main-number-statistics">0%</div>
+                    <div class="main-number-statistics-text">Правильныx ответов</div>
+                </div>
+                <div class="block-new-words">
+                    <div id="main-number-new-words" class="main-number-statistics">0</div>
+                    <div class="main-number-statistics-text">Новых слов</div>
+                </div>
+            </div>
+            <div class="block-statistics-games">
+                <div class="block-statistics-sprint">
+                    <div class="name-game-statistics">Спринт</div>
+                    <div class="block-statistics-sprint__item">количество изученных слов за день: 0</div>
+                    <div id="percent-right-answers-sprint" class="block-statistics-sprint__item">процент правильных ответов: 0%</div>
+                    <div id="answers-in-row-sprint" class="block-statistics-sprint__item">самая длинная серия правильных ответов: 0</div>
+                </div> 
+                <div class="block-statistics-audiocall">
+                    <div class="name-game-statistics">Аудиовызов</div>
+                    <div class="block-statistics-audiocall__item">количество изученных слов за день: 0</div>
+                    <div id="percent-right-answers-audiocall" class="block-statistics-audiocall__item">процент правильных ответов: 0%</div>
+                    <div id="answers-in-row-audiocall" class="block-statistics-audiocall__item">самая длинная серия правильных ответов: 0</div>
+                </div>
+            </div>
+        </div>
     </section>
     <nav class="navigation-section hide-navigation">
         <ul class="navigation-pages">
             <li id="button-main-page" class="page-navigation">Главная</li>
-            <li class="page-navigation">Учебник</li>
+            <li id="button-to-textbook" class="page-navigation">Учебник</li>
             <li id="button-mini-games" class="page-navigation">Мини-игры</li>
-            <li class="page-navigation">Статистика</li>
+            <li id="button-to-page-statistics" class="page-navigation">Статистика</li>
             <li class="page-navigation">О команде</li>
         </ul>
     </nav>
@@ -320,6 +356,5 @@
     <div class="shadow" id="shadow"></div>
     <audio id="audio-wrong-answer" src="./mp3/zvuk-nevernogo-otveta.mp3"></audio>
     <audio id="audio-right-answer" src="./mp3/zvuk-pravilnogo-otveta.mp3"></audio>
-
 </body>
 </html>

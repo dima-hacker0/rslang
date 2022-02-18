@@ -1,12 +1,10 @@
 import { currentNumberCard } from './textbook';
 import { outputDifficultWords } from './page-difficulty-words';
+import { token, userId } from './statistics-day';
 
 const buttonAddLearnedWord = document.querySelector('.button-learned-word');
 const addDifficultWordsTextbook = document.querySelector('.add-difficult-words-textbook');
 const buttonRemoveDifficultWord = document.querySelector('.button-remove-difficult-word');
-
-let userId = JSON.parse(localStorage.getItem('userInformation')).userId;
-let token = JSON.parse(localStorage.getItem('userInformation')).token;
 
 async function getWordInformation(wordId) {
     const rawResponse = await fetch(`https://react-learnwords-dima-hacker0.herokuapp.com/users/${userId}/aggregatedWords/${wordId}`, {
@@ -94,3 +92,5 @@ buttonAddLearnedWord.addEventListener('click', async function () {
       updateWord(this.id, { optional: updateWordData });
     }
 });
+
+export { addWord, updateWord, getWordInformation };
