@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>rs-lang</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container-header max-width-section">
+            <div class="left-side-header">
+                <div class="logo-rs-lang">RSLang</div>
+            </div>
+            <div class="right-side-header">
+                <div class="inforamtion-about-user hide-block">
+                    <div class="avatar-end-name-user">
+                        <img class="inforamtion-about-user-img" src="./img/png/person.png" alt="person">
+                        <div class="name-of-user">Димас</div>
+                    </div> 
+                    <img title="Выйти из аккаунта" class="img-exit" src="./img/svg/svg-exit.svg" alt="exit">
+                </div> 
+                <div class="icon-nav">
+                    <div class="line-nav first-line"></div>
+                    <div class="line-nav second-line"></div>
+                    <div class="line-nav third-line"></div>
+                </div> 
+            </div>
+        </div>
+    </header>
+    <section class="main-page">
+        <div class="container-start-page max-width-section">
+            <div class="first-start-column">
+                <div class="main-text-rslang">RSLang</div>
+                <div class="about-application">Приложение для эффективного изучения иностранных слов в игровой форме. Всегда под рукой. На любом устройстве</div>
+            </div>
+            <div class="second-main-column">
+                <div class="buttons-start-page">
+                    <button class="button-about-project">О проекте</button>
+                    <button class="registration-button">Войти</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-mini-games hide-block">
+        <div class="container-games-page max-width-section">
+            <div class="left-side-page-mimi-games">
+                <h2 class="text-choice-game">Выберите игру</h2>
+                <button id="button-game-sprint" class="button-min-games">
+                    <div class="text-for-games-buttons">Спринт</div>
+                    <img class="run-person" src="./img/svg/run-person.svg" alt="run-person">
+                </button>
+                <button id="button-game-audiocall" class="button-min-games">
+                    <div class="text-for-games-buttons">Аудиовызов</div>
+                    <img class="sound-img" src="./img/svg/sound.svg" alt="sound">
+                </button>
+            </div>
+            <div class="right-side-page-mimi-games">
+                <h2 class="text-choice-game">Выберите сложность</h2>
+                <div class="block-buttons-level-english">
+                    <button id="number-level-button-1" class="button-level-english number-level-button-1 click-button">A1 Elementary</button>
+                    <button id="number-level-button-2" class="button-level-english number-level-button-2">A2 Pre-Intermediate</button>
+                    <button id="number-level-button-3" class="button-level-english number-level-button-3">B1 Intermediate</button>
+                    <button id="number-level-button-4" class="button-level-english number-level-button-4">B2 Upper-Intermediate</button>
+                    <button id="number-level-button-5" class="button-level-english number-level-button-5">C1 Advanced</button>
+                    <button id="number-level-button-6" class="button-level-english number-level-button-6">C2 Proficiency</button>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    <section class="section-game-sprint hide-block max-width-section">
+        <div class="game-area-sprint"> 
+            <div class="english-word-text">слово на англ</div>
+            <div class="translate-word-text">перевод</div>
+            <div class="block-buttons-true-false-sprint">
+                <button class="button-true-false-sprint false-button-sprint">Неверно</button>
+                <button class="button-true-false-sprint true-button-sprint">Верно</button>
+            </div>
+            <div class="arrows-sprint-block">
+                <img class="arrows-sprint" src="./img/svg/left-arrow-white.svg" alt="left-arrow">
+                <img class="arrows-sprint" src="./img/svg/right-arrow-white.svg" alt="right-arrow">
+            </div>
+            <div class="score-sprint">Score: 0</div>
+            <div class="time-sprint">60</div>
+            <div class="coefficient-sprint-game">X1</div>
+        </div>
+ 
+        <div class="area-result-sprint hide-block">
+            <h3 class="result-of-sprint">Ваш результат: 777 очков</h3>
+            <div class="percent-right-answers-text">Процент правильных ответов: 77%</div>
+            <div class="area-with-right-and-wrong-answers">
+                <div class="answers-wrond-right-sprint">
+                    <div class="wrong-answers-sprint">
+                        <h5 class="text-mistakes-sprint">Ошибок: 1</h5>
+                        <div class="list-wrong-answers-sprint"></div>
+                    </div>
+                    <div class="right-answers-sprint">
+                        <h5 class="text-right-sprint">Знаю: 1</h5>
+                        <div class="list-true-answers-sprint"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img class="the-cross-sprint-page" src="./img/svg/the-cross.svg" alt="cross">
+        <div class="instruction-sprint">Вы можете использовать ← → для управления</div>
+    </section>
+    
+    <section class="section-game-audiocall hide-block">
+        <div class="game-area-audiocall">
+            <div class="block-with-answer-audiocall hide-block">
+                <img src="https://react-learnwords-dima-hacker0.herokuapp.com/files/01_0002.jpg" class="img-answer-audiocall" alt="photo">
+                <div class="answer-word-on-english">englishhh</div>
+            </div>
+            <div class="button-repeat-word-audiocall">
+                <img class="img-repeat-word-audiocall" src="./img/svg/sound.svg" alt="music">
+            </div>
+            <div class="block-response-options-audiocall">
+                <div id="button-answer-audiocall-1" class="response-option-audiocall">
+                    <div class="shell-number-response-audiocall">
+                        <div class="number-response-audiocall">1</div>
+                    </div>
+                    <div id="word-audiocall-1" class="word-of-respone-audiocall"></div>
+                </div>
+                <div id="button-answer-audiocall-2" class="response-option-audiocall">
+                    <div class="shell-number-response-audiocall">
+                        <div class="number-response-audiocall">2</div>
+                    </div>
+                    <div id="word-audiocall-2" class="word-of-respone-audiocall"></div>
+                </div>
+                <div id="button-answer-audiocall-3" class="response-option-audiocall">
+                    <div class="shell-number-response-audiocall">
+                        <div class="number-response-audiocall">3</div>
+                    </div>
+                    <div id="word-audiocall-3" class="word-of-respone-audiocall"></div>
+                </div>
+                <div id="button-answer-audiocall-4" class="response-option-audiocall">
+                    <div class="shell-number-response-audiocall">
+                        <div class="number-response-audiocall">4</div>
+                    </div>
+                    <div id="word-audiocall-4" class="word-of-respone-audiocall"></div>
+                </div> 
+                <div id="button-answer-audiocall-5" class="response-option-audiocall">
+                    <div class="shell-number-response-audiocall">
+                        <div class="number-response-audiocall">5</div>
+                    </div>
+                    <div id="word-audiocall-5" class="word-of-respone-audiocall"></div>
+                </div>
+            </div>
+            <button class="button-next-world-audiocall">Не знаю</button>
+        </div>
+        <div class="area-result-audiocall hide-block">
+            <div class="percent-right-answers-text-audiocall">Процент правильных ответов: 77%</div>
+            <div class="area-with-right-and-wrong-answers-audiocall">
+                <div class="answers-wrond-right-audiocall">
+                    <div class="wrong-answers-audiocall">
+                        <h5 class="text-mistakes-audiocall">Ошибок: 1</h5>
+                        <div class="list-wrong-answers-audiocall"></div>
+                    </div>
+                    <div class="right-answers-audiocall">
+                        <h5 class="text-right-audiocall">Знаю: 1</h5>
+                        <div class="list-true-answers-audiocall"></div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div id="line-of-progress-audiocall" class="line-of-progress"></div>
+        <div class="guide-audiocall">Используйте клавиши 1, 2, 3, 4, 5 для ответа и &#8594; для перехода на следующий вопрос</div>
+        <img class="the-cross-audiocall-page" src="./img/svg/the-cross.svg" alt="cross">
+        <img id="full-screen-audiocall" class="full-screen" src="./img/svg/fullscreen.svg" alt="fullscreen">
+        <img style="display: none;" src="./img/svg/fullscreen-exit.svg" alt="">
+    </section>
+
+    <section class="section-registration">
+        <div class="buttons-registr-or-enter max-width-section">
+            <button class="button-log-in-account selected-button-registr">Войти</button>
+            <button class="button-registration-account">Регистрация</button>
+            <span class="chose-rigistration-page"></span>
+        </div>
+        <div class="container-registr-and-log-in">
+            <div class="container-log-in">
+                <div class="block-user-information-log-in"> 
+                    <img class="img-person-registration" src="./img/png/person.png" alt="person">
+                    <input class="input-email-log-in" placeholder="Почта" type="email">
+                    <input class="input-password-log-in" placeholder="Пароль" type="password">
+                    <p class="error-wrong-email-or-password hide-block">Неверная почта или пароль</p>
+                    <div class="buttons-back-or-log-in">
+                        <button class="button-back-registration-log-in">Назад</button>
+                        <button class="button-log-in-to-account">Вход</button>
+                    </div>
+                </div>
+            </div>
+            <div class="container-registration">
+                <div class="button-add-photo">
+                    <img class="img-plus-add-photo" src="./img/png/person.png" alt="plus">
+                </div>
+                <input class="input-name-registration" placeholder="Имя" type="text">
+                <p class="text-error-name hide-block">Заполните это поле</p>
+                <input class="input-email-registration" placeholder="Почта" type="email">
+                <p class="text-error-email text-error-email-hide">электронная почта должна иметь форму username@example.com , где: username - имя пользователя, должно содержать от 3 до 15 символов (буквы, цифры, подчеркивания, дефисы), не должно содержать пробелов; example - домен первого уровня состоит не менее чем из 2 латинских букв; com - домен верхнего уровня, отделенный от домена первого уровня точкой и состоящий не менее чем из 2 латинских букв.</p>
+                <input class="input-password-registration" placeholder="Пароль" type="password">
+                <p class="text-error-password text-error-password-hide">Пароль должен содержать минимум 8 символов</p>
+                <div class="navigation-registration-buttons">
+                    <button class="button-back-registration-log-in">Назад</button>
+                    <button class="button-registration-to-account">Регистрация</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="textbook-section hide-block">
+        <div class="container-textbook-section max-width-section">
+            <div class="navigation-textbook">
+                <div class="button-page-textbook chosen-button-page-textbook">Учебник</div>
+            </div>
+            <div class="textbook-block">
+                <div class="difficulty-level-textbook">
+                    <div id="button-difficulty-level-textbook-1" class="button-difficulty-level-textbook">
+                        <div id="circle-difficukty-button-1" class="circle-difficukty-button chousen-level-text-book hover-difficulty-level"></div>
+                        <div id="describe-level-difficulty-1" class="describe-level-difficulty chousen-level-text-book hover-difficulty-level">Easy</div>
+                        <div id="level-difficulty-textbook-1" class="level-difficulty-textbook chousen-level-text-book hover-difficulty-level">A1</div>
+                    </div>
+                    <div id="button-difficulty-level-textbook-2" class="button-difficulty-level-textbook">
+                        <div style="background-color: #9CD7F9" id="circle-difficukty-button-2" class="circle-difficukty-button hover-difficulty-level"></div>
+                        <div id="describe-level-difficulty-2" class="describe-level-difficulty hover-difficulty-level">Easy</div>
+                        <div id="level-difficulty-textbook-2" class="level-difficulty-textbook hover-difficulty-level">A2</div>
+                    </div>
+                    <div id="button-difficulty-level-textbook-3" class="button-difficulty-level-textbook">
+                        <div id="circle-difficukty-button-3" class="circle-difficukty-button circle-medium-difficulty hover-difficulty-level"></div>
+                        <div id="describe-level-difficulty-3" class="describe-level-difficulty hover-difficulty-level medium-level">Medium</div>
+                        <div id="level-difficulty-textbook-3" class="level-difficulty-textbook hover-difficulty-level">B1</div>
+                    </div>
+                    <div id="button-difficulty-level-textbook-4" class="button-difficulty-level-textbook">
+                        <div style="background-color: #FF7171" id="circle-difficukty-button-4" class="circle-difficukty-button circle-medium-difficulty hover-difficulty-level"></div>
+                        <div id="describe-level-difficulty-4" class="describe-level-difficulty hover-difficulty-level medium-level">Medium</div>
+                        <div id="level-difficulty-textbook-4" class="level-difficulty-textbook hover-difficulty-level">B2</div>
+                    </div>
+                    <div id="button-difficulty-level-textbook-5" class="button-difficulty-level-textbook">
+                        <div id="circle-difficukty-button-5" class="circle-difficukty-button circle-hard-difficulty hover-difficulty-level"></div>
+                        <div id="describe-level-difficulty-5" class="describe-level-difficulty hover-difficulty-level">Hard</div>
+                        <div id="level-difficulty-textbook-5" class="level-difficulty-textbook hover-difficulty-level">C1</div>
+                    </div>
+                    <div id="button-difficulty-level-textbook-6" class="button-difficulty-level-textbook">
+                        <div style="background-color: #8A78FA;" id="circle-difficukty-button-6" class="circle-difficukty-button circle-hard-difficulty hover-difficulty-level"></div>
+                        <div id="describe-level-difficulty-6" class="describe-level-difficulty hover-difficulty-level">Hard</div>
+                        <div id="level-difficulty-textbook-6" class="level-difficulty-textbook hover-difficulty-level">C2</div>
+                    </div>
+                    <div class="button-show-difficulty-words content-for-log-in-users">
+                        <div class="text-button-difficult-words">Сложные слова</div>
+                    </div>
+                </div>
+                <div class="number-page-block"> 
+                    <img class="prev-page-button" src="./img/svg/prev-page-button.svg" alt="">
+                    <div class="number-page">1/30</div>
+                    <img class="next-page-button" src="./img/svg/next-page-button.svg" alt="">
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h2 class="heading-textbook-words">Слова</h1>
+                    <div class="this-page-is-learned hide-block">Эта страница изучена</div>
+                </div>
+                <div class="textbook-words-columns">
+                    <div class="textbook-words">
+                    </div>
+                    <div class="textbook-translate-img-example">
+                        <img class="img-textbook-main" src="https://react-learnwords-dima-hacker0.herokuapp.com/files/01_0002.jpg" alt="img">
+                        <div class="all-information-about-word">
+                            <div class="word-and-listening-button">
+                                <div class="word-on-english-textbook">Слово</div>
+                                <img class="button-listening-word-textbook" src="./img/svg/sound.svg" alt="sound">
+                            </div>
+                            <div class="translate-word-on-english-textbook">Перевод</div>
+                            <div class="transcription-textbook">транскрипция</div>
+                            <div class="block-diffucult-learned-buttons content-for-log-in-users">
+                                <button class="add-difficult-words-textbook">Сложное слово</button>
+                                <button class="button-learned-word">Выученное слово</button>
+                            </div>
+                            <button class="button-remove-difficult-word hide-block">удалить из сложных</button>
+                            <h3 class="meaning-word-heading">Значение</h3>
+                            <p id="meaning-word-example">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium voluptatum fuga quae officiis modi nulla similique inventor</p>
+                            <p id="meaning-word-example-translate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium voluptatum fuga quae officiis modi nulla similique inventor</p>
+                            <h3 class="meaning-word-heading">Пример</h3>
+                            <p id="example-use-word">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium voluptatum fuga quae officiis modi nulla similique inventor</p>
+                            <p id="example-use-word-translate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium voluptatum fuga quae officiis modi nulla similique inventor</p>
+                            <h3 class="meaning-word-heading content-for-log-in-users">Ответы в играх</h3>
+                            <div class="block-words-mini-games-statistics content-for-log-in-users">
+                                <div class="block-statistics-game">
+                                    <div class="neme-mini-game-statistics-textbook">Спринт</div>
+                                    <div id="score-sprint-textbook">0</div>
+                                </div>
+                                <div class="block-statistics-game">
+                                    <div class="neme-mini-game-statistics-textbook">Аудиовызов</div>
+                                    <div id="score-audiocall-textbook">0</div>
+                                </div>
+                            </div>
+                            <div class="block-buttons-play-mini-games content-for-log-in-users">
+                                <button id="button-start-sprint-textbook" class="button-play-mimi-game-textbook">Играть спринт</button>
+                                <button id="button-start-audiocall-textbook" class="button-play-mimi-game-textbook">Играть Аудиовызов</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </section>
+    <section class="section-statistics hide-block">
+        <div class="statistics-container max-width-section">
+            <h3 class="heading-statistics">Статистика</h3>
+            <div class="block-statistics">
+                <div class="block-learned-words">
+                    <div id="main-number-statistics-learned" class="main-number-statistics">0</div>
+                    <div class="main-number-statistics-text">Слов изучено</div>
+                </div>
+                <div class="block-percent-right-answers">
+                    <div id="main-number-statistics-percent-right" class="main-number-statistics">0%</div>
+                    <div class="main-number-statistics-text">Правильныx ответов</div>
+                </div>
+                <div class="block-new-words">
+                    <div id="main-number-new-words" class="main-number-statistics">0</div>
+                    <div class="main-number-statistics-text">Новых слов</div>
+                </div>
+            </div>
+            <div class="block-statistics-games">
+                <div class="block-statistics-sprint">
+                    <div class="name-game-statistics">Спринт</div>
+                    <div class="block-statistics-sprint__item">количество изученных слов за день: 0</div>
+                    <div id="percent-right-answers-sprint" class="block-statistics-sprint__item">процент правильных ответов: 0%</div>
+                    <div id="answers-in-row-sprint" class="block-statistics-sprint__item">самая длинная серия правильных ответов: 0</div>
+                </div> 
+                <div class="block-statistics-audiocall">
+                    <div class="name-game-statistics">Аудиовызов</div>
+                    <div class="block-statistics-audiocall__item">количество изученных слов за день: 0</div>
+                    <div id="percent-right-answers-audiocall" class="block-statistics-audiocall__item">процент правильных ответов: 0%</div>
+                    <div id="answers-in-row-audiocall" class="block-statistics-audiocall__item">самая длинная серия правильных ответов: 0</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-team hide-block">
+        <div class="container-team max-width-section">
+            <div class="column-avatar">
+                <img class="img-avatar" src="./img/png/avatar.jpg" alt="avatar">
+            </div>
+            <div class="column-information-about-team">
+                <div class="header-team-page">Dzmitry Vaitsiakhouski</div>
+                <div>Написал все приложение</div>
+            </div>
+        </div> 
+    </section>
+    <nav class="navigation-section hide-navigation">
+        <ul class="navigation-pages">
+            <li style="padding-top: 30px;" id="button-main-page" class="page-navigation">Главная</li>
+            <li id="button-to-textbook" class="page-navigation">Учебник</li>
+            <li id="button-mini-games" class="page-navigation">Мини-игры</li>
+            <li class="content-for-log-in-users">
+                <div id="button-to-page-statistics" class="page-navigation">Статистика</div>
+            </li>
+            <li id="button-to-page-team" class="page-navigation">О команде</li>
+        </ul>
+    </nav>
+    <footer class="footer"> 
+        <div class="container-footer max-width-section">
+                <a class="rss-logo" href="https://rs.school/index.html"><img src="./img/svg/rs_school.svg" alt="logo"></a>
+                <div class="year-of-created">2022</div>
+                <a class="github-logo" href="https://github.com/dima-hacker0"><img class="img-github" src="./img/svg/github-logo.svg" alt="github"></a>
+        </div>
+    </footer>
+    <div class="shadow" id="shadow"></div>
+    <audio id="audio-wrong-answer" src="./mp3/zvuk-nevernogo-otveta.mp3"></audio>
+    <audio id="audio-right-answer" src="./mp3/zvuk-pravilnogo-otveta.mp3"></audio>
+</body>
+</html>

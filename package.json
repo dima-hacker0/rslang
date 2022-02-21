@@ -1,0 +1,50 @@
+{
+    "name": "newsjs",
+    "version": "1.0.0",
+    "description": "Api for Rolling Scopes School task \"Async Race\".",
+    "main": "webpack.base.config.js",
+    "scripts": {
+        "start": "webpack serve --open --config ./webpack.config.js --env mode=dev",
+        "build": "webpack --config ./webpack.config.js --env mode=prod",
+        "lint": "eslint . --ext .ts"
+    },
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "keywords": [],
+    "author": "Aleh Serhiyenia",
+    "license": "ISC",
+    "homepage": "",
+    "devDependencies": {
+        "@types/node": "^16.11.12",
+        "@typescript-eslint/eslint-plugin": "^5.10.1",
+        "@typescript-eslint/parser": "^5.10.1",
+        "clean-webpack-plugin": "^3.0.0",
+        "copy-webpack-plugin": "^7.0.0",
+        "css-loader": "^5.2.7",
+        "eslint": "^7.32.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-import": "^2.23.3",
+        "eslint-plugin-prettier": "^3.4.0",
+        "file-loader": "^6.2.0",
+        "html-loader": "^3.0.1",
+        "html-webpack-plugin": "^5.5.0",
+        "json-server": "^0.17.0",
+        "prettier": "2.2.1",
+        "style-loader": "^2.0.0",
+        "svg-inline-loader": "^0.8.2",
+        "typescript": "^4.5.3",
+        "url-loader": "^4.1.1",
+        "webpack": "^5.68.0",
+        "webpack-cli": "^4.9.1",
+        "webpack-dev-server": "^3.11.2",
+        "webpack-merge": "^5.7.3"
+    },
+    "dependencies": {
+        "concurrently": "^7.0.0",
+        "eslint-config-airbnb": "^19.0.4",
+        "nouislider": "^15.5.0",
+        "ts-loader": "^9.2.6"
+    }
+}
