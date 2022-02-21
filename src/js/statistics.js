@@ -1,6 +1,7 @@
 import { addWord, updateWord } from './add-update-delete-words';
 import { getWordInformation } from './add-update-delete-words';
 import { token, userId } from './statistics-day';
+import { userIsLogged } from './registration';
 
 const scoreSprintTextbook = document.querySelector('#score-sprint-textbook');
 const scoreAudiocallTextbook = document.querySelector('#score-audiocall-textbook');
@@ -51,6 +52,7 @@ async function updateStatisticsWord(wordId, miniGame, trueOrFalseAnswer) {
 }
 
 async function addInformationHTML(wordId) {
+    if (!userIsLogged) return;
     const wordInformation = await getWordInformation(wordId);
     if (wordInformation === 'thisIsNewWord') {
         scoreSprintTextbook.innerHTML = '0/0';

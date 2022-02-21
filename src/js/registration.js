@@ -1,5 +1,6 @@
 import { closePageRegistration } from './navigation';
-import { createDataStatistic, updateTodayData, updateToken } from './statistics-day';
+import { updateTodayData, updateToken } from './statistics-day';
+import { changeLevelDifficulty } from './textbook';
 
 const buttonLogInPopap = document.querySelector('.button-log-in-account');
 const buttonRegistrationPopap = document.querySelector('.button-registration-account');
@@ -20,6 +21,7 @@ const nameOfUser = document.querySelector('.name-of-user');
 const inforamtionAboutUser = document.querySelector('.inforamtion-about-user');
 const registrationButton = document.querySelector('.registration-button');
 const buttonLogOut = document.querySelector('.img-exit');
+const contentForLogInUsers = document.querySelectorAll('.content-for-log-in-users');
 
 let userIsLogged = false;
 
@@ -97,7 +99,6 @@ async function registration() {
         inputEmailRegistration.style.borderBottom = '2px solid #f57359';
         return;
     }
-    // createDataStatistic();
     logIntoAccount(user);
 }
 
@@ -123,10 +124,13 @@ async function logIntoAccount(objectEmailAndPassword) {
 function logIntoAccountHTML(nameUser) {
     nameOfUser.innerHTML = nameUser;
     inforamtionAboutUser.classList.remove('hide-block');
+    contentForLogInUsers.forEach(element => element.classList.remove('content-for-log-in-users'));
     closePageRegistration();
     registrationButton.innerHTML = 'Выйти';
     userIsLogged = true;
+    changeLevelDifficulty(1);
 }
+
 window.onload = function () {
     if (localStorage.getItem('userInformation') !== null) {
         let nameUser = JSON.parse(localStorage.getItem('userInformation')).name;
@@ -138,7 +142,9 @@ function logOutOfAccount() {
     userIsLogged = false;
     registrationButton.innerHTML = 'Войти';
     inforamtionAboutUser.classList.add('hide-block');
+    contentForLogInUsers.forEach(element => element.classList.add('content-for-log-in-users'));
     localStorage.removeItem('userInformation');
+    changeLevelDifficulty(1);
 }
 buttonLogInPopap.addEventListener('click', function () {
     changePagRegistrationPopap('log-in');

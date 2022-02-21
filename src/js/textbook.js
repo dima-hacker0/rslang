@@ -1,6 +1,7 @@
 import { addInformationHTML } from './statistics';
 import { token, userId } from './statistics-day';
-import { getWordInformation } from './add-update-delete-words';
+import { userIsLogged } from './registration';
+
 const difficultyLevelTextbook = document.querySelector('.difficulty-level-textbook');
 const blockTextbookWords = document.querySelector('.textbook-words');
 const prevPageButton = document.querySelector('.prev-page-button');
@@ -21,6 +22,7 @@ const textButtonDifficultwords = document.querySelector('.text-button-difficult-
 const blockDiffucultLearnedButtons = document.querySelector('.block-diffucult-learned-buttons');
 const buttonRemoveDifficultWord = document.querySelector('.button-remove-difficult-word');
 const numberPageBlock = document.querySelector('.number-page-block');
+const thisPageIsLearned = document.querySelector('.this-page-is-learned');
 
 const NUMBERS_DIFFICULTY_LEVELS = 6;
 let currentCardId;
@@ -87,12 +89,14 @@ async function addCardsOnPage(numberDifficulty, words) {
         blockTextbookWords.insertAdjacentHTML('beforeend', card);
     }
     pickCard(1);
+    if (!userIsLogged) return;
     let arrPromises = [];
     for (let i = 0; i < words.length; i++) {
         arrPromises[i] = checkDifficultWord(arrId[i]);
     }
     Promise.all(arrPromises)
     .then(function (responses) {
+        let numbersIsLearned = 0;
         pageIsLoaded = true;
         responses.forEach(
         function (response, i) {
@@ -102,9 +106,15 @@ async function addCardsOnPage(numberDifficulty, words) {
             } else if (response === 'isLearned') {
                 document.querySelector(`#circle-difficult-word-${i + 1}`).style.display = 'inherit';
                 document.querySelector(`#circle-difficult-word-${i + 1}`).style.backgroundColor = '#00bf97';
+                numbersIsLearned++;
             }
         }
     );
+    if (numbersIsLearned === 20) {
+        thisPageIsLearned.classList.remove('hide-block');
+    } else {
+        thisPageIsLearned.classList.add('hide-block');
+    }
     });
 }
 
@@ -121,7 +131,11 @@ async function pickCard(numberCard) {
         method: 'GET'
     });
     const informationWord = await rawResponse.json();
+    changeWordInformation(informationWord);
+    if (!userIsLogged) return;
     let difficultOrNot = await checkDifficultWord(informationWord.id);
+    addDifficultWordsTextbook.id = informationWord.id;
+    buttonAddLearnedWord.id = informationWord.id;
     if (difficultOrNot === 'isDifficult') {
         addDifficultWordsTextbook.classList.add('choice-word');
         buttonAddLearnedWord.classList.remove('choice-word');
@@ -132,9 +146,6 @@ async function pickCard(numberCard) {
         addDifficultWordsTextbook.classList.remove('choice-word');
         buttonAddLearnedWord.classList.remove('choice-word');
     }
-    addDifficultWordsTextbook.id = informationWord.id;
-    buttonAddLearnedWord.id = informationWord.id;
-    changeWordInformation(informationWord);
 }
 
 function changeWordInformation(informationWord) {
@@ -214,7 +225,7 @@ blockTextbookWords.addEventListener('click', function (e) {
 });
 
 prevPageButton.addEventListener('click', async function () {
-    if (currentTextBookPage === 1 || !pageIsLoaded) return;
+    if (currentTextBookPage === 1 || (!pageIsLoaded && token)) return;
     currentTextBookPage--;
     numberPageHTML.innerHTML = `${currentTextBookPage}/30`;
     const words = await getInformationFromServer(currentDifficultyLevel - 1, currentTextBookPage - 1);
@@ -222,7 +233,7 @@ prevPageButton.addEventListener('click', async function () {
 });
 
 nextPageButton.addEventListener('click', async function () {
-    if (currentTextBookPage === 30 || !pageIsLoaded) return;
+    if (currentTextBookPage === 30 || (!pageIsLoaded && token)) return;
     currentTextBookPage++;
     numberPageHTML.innerHTML = `${currentTextBookPage}/30`;
     const words = await getInformationFromServer(currentDifficultyLevel - 1, currentTextBookPage - 1);
@@ -230,5 +241,5 @@ nextPageButton.addEventListener('click', async function () {
 });
 
 export {
- currentNumberCard, addCardsOnPage, currentDifficultyLevel, currentTextBookPage, currentCardId
+ currentNumberCard, addCardsOnPage, currentDifficultyLevel, currentTextBookPage, currentCardId, changeLevelDifficulty
 };

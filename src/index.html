@@ -23,7 +23,7 @@
                     <div class="avatar-end-name-user">
                         <img class="inforamtion-about-user-img" src="./img/png/person.png" alt="person">
                         <div class="name-of-user">Димас</div>
-                    </div>
+                    </div> 
                     <img title="Выйти из аккаунта" class="img-exit" src="./img/svg/svg-exit.svg" alt="exit">
                 </div> 
                 <div class="icon-nav">
@@ -34,7 +34,7 @@
             </div>
         </div>
     </header>
-    <section class="main-page hide-block">
+    <section class="main-page">
         <div class="container-start-page max-width-section">
             <div class="first-start-column">
                 <div class="main-text-rslang">RSLang</div>
@@ -250,7 +250,7 @@
                         <div id="describe-level-difficulty-6" class="describe-level-difficulty hover-difficulty-level">Hard</div>
                         <div id="level-difficulty-textbook-6" class="level-difficulty-textbook hover-difficulty-level">C2</div>
                     </div>
-                    <div class="button-show-difficulty-words">
+                    <div class="button-show-difficulty-words content-for-log-in-users">
                         <div class="text-button-difficult-words">Сложные слова</div>
                     </div>
                 </div>
@@ -259,7 +259,10 @@
                     <div class="number-page">1/30</div>
                     <img class="next-page-button" src="./img/svg/next-page-button.svg" alt="">
                 </div>
-                <h2 class="heading-textbook-words">Слова</h1>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h2 class="heading-textbook-words">Слова</h1>
+                    <div class="this-page-is-learned hide-block">Эта страница изучена</div>
+                </div>
                 <div class="textbook-words-columns">
                     <div class="textbook-words">
                     </div>
@@ -272,7 +275,7 @@
                             </div>
                             <div class="translate-word-on-english-textbook">Перевод</div>
                             <div class="transcription-textbook">транскрипция</div>
-                            <div class="block-diffucult-learned-buttons">
+                            <div class="block-diffucult-learned-buttons content-for-log-in-users">
                                 <button class="add-difficult-words-textbook">Сложное слово</button>
                                 <button class="button-learned-word">Выученное слово</button>
                             </div>
@@ -283,8 +286,8 @@
                             <h3 class="meaning-word-heading">Пример</h3>
                             <p id="example-use-word">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium voluptatum fuga quae officiis modi nulla similique inventor</p>
                             <p id="example-use-word-translate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium voluptatum fuga quae officiis modi nulla similique inventor</p>
-                            <h3 class="meaning-word-heading">Ответы в играх</h3>
-                            <div class="block-words-mini-games-statistics">
+                            <h3 class="meaning-word-heading content-for-log-in-users">Ответы в играх</h3>
+                            <div class="block-words-mini-games-statistics content-for-log-in-users">
                                 <div class="block-statistics-game">
                                     <div class="neme-mini-game-statistics-textbook">Спринт</div>
                                     <div id="score-sprint-textbook">0</div>
@@ -294,7 +297,7 @@
                                     <div id="score-audiocall-textbook">0</div>
                                 </div>
                             </div>
-                            <div class="block-buttons-play-mini-games">
+                            <div class="block-buttons-play-mini-games content-for-log-in-users">
                                 <button id="button-start-sprint-textbook" class="button-play-mimi-game-textbook">Играть спринт</button>
                                 <button id="button-start-audiocall-textbook" class="button-play-mimi-game-textbook">Играть Аудиовызов</button>
                             </div>
@@ -304,7 +307,7 @@
             </div>
         </div> 
     </section>
-    <section class="section-statistics">
+    <section class="section-statistics hide-block">
         <div class="statistics-container max-width-section">
             <h3 class="heading-statistics">Статистика</h3>
             <div class="block-statistics">
@@ -337,13 +340,26 @@
             </div>
         </div>
     </section>
+    <section class="section-team hide-block">
+        <div class="container-team max-width-section">
+            <div class="column-avatar">
+                <img class="img-avatar" src="./img/png/avatar.jpg" alt="avatar">
+            </div>
+            <div class="column-information-about-team">
+                <div class="header-team-page">Dzmitry Vaitsiakhouski</div>
+                <div>Написал все приложение</div>
+            </div>
+        </div> 
+    </section>
     <nav class="navigation-section hide-navigation">
         <ul class="navigation-pages">
-            <li id="button-main-page" class="page-navigation">Главная</li>
+            <li style="padding-top: 30px;" id="button-main-page" class="page-navigation">Главная</li>
             <li id="button-to-textbook" class="page-navigation">Учебник</li>
             <li id="button-mini-games" class="page-navigation">Мини-игры</li>
-            <li id="button-to-page-statistics" class="page-navigation">Статистика</li>
-            <li class="page-navigation">О команде</li>
+            <li class="content-for-log-in-users">
+                <div id="button-to-page-statistics" class="page-navigation">Статистика</div>
+            </li>
+            <li id="button-to-page-team" class="page-navigation">О команде</li>
         </ul>
     </nav>
     <footer class="footer"> 

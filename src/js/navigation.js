@@ -1,6 +1,7 @@
 import { resetResults } from './page-sprint';
 import { getAllWordsInLevelFromServ as getWordsAudio, resetResults as resetResultsAudiocall } from './audio-call';
 import { userIsLogged, logOutOfAccount } from './registration';
+import { updateStatisticsHTML } from './statistics-day';
 
 const buttonMenu = document.querySelector('.icon-nav');
 const firstMenuLine = document.querySelector('.first-line');
@@ -27,6 +28,8 @@ const buttonStartAudiocallTextbook = document.querySelector('#button-start-audio
 const buttonToTextbook = document.querySelector('#button-to-textbook');
 const sectionStatistics = document.querySelector('.section-statistics');
 const buttonToPageStatistics = document.querySelector('#button-to-page-statistics');
+const sectionTeam = document.querySelector('.section-team');
+const buttonToPageTeam = document.querySelector('#button-to-page-team');
 
 let pages = [];
 
@@ -48,13 +51,26 @@ pages.push(sectionGameSprint);
 pages.push(pageAudiocall);
 pages.push(textbookSection);
 pages.push(sectionStatistics);
+pages.push(sectionTeam);
 
-buttonToPageStatistics.addEventListener('click', function () {
+buttonToPageTeam.addEventListener('click', function () {
+    resetResultsAudiocall();
+    resetResults();
+    goToAnotherPage(sectionTeam);
+    openCloseMenu();
+});
+
+buttonToPageStatistics.addEventListener('click', async function () {
+    resetResultsAudiocall();
+    resetResults();
+    await updateStatisticsHTML();
     goToAnotherPage(sectionStatistics);
     openCloseMenu();
 });
 
 buttonToTextbook.addEventListener('click', function () {
+    resetResultsAudiocall();
+    resetResults();
     goToAnotherPage(textbookSection);
     openCloseMenu();
 });
@@ -65,6 +81,8 @@ buttonStartAudiocallTextbook.addEventListener('click', function () {
 });
 
 buttonMiniGames.addEventListener('click', function () {
+    resetResultsAudiocall();
+    resetResults();
     goToAnotherPage(pageСhoiceGame);
     openCloseMenu();
 });

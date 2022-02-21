@@ -3,6 +3,7 @@ import { addRightOrFalseAnswer, listenToWordResultsPage } from './page-sprint';
 import { getWordsForMiniGames } from './page-sprint';
 import { updateStatisticsWord } from './statistics';
 import { createDataStatistic, getStatistics, addDataNewWord } from './statistics-day';
+import { userIsLogged } from './registration';
 
 const buttonRepeatWordAudiocall = document.querySelector('.button-repeat-word-audiocall');
 const blockResponseOptionsAudiocall = document.querySelector('.block-response-options-audiocall');
@@ -86,35 +87,44 @@ blockResponseOptionsAudiocall.addEventListener('click', function (e) {
 });
 
 async function checkRightOrWrongAnswer(numberAnswerFromUser) {
-    let statistics = JSON.parse(JSON.stringify(await getStatistics()));
-    statistics = statistics.optional;
-    statistics.audiocallAnswers++;
+    let statistics;
+    if (userIsLogged) {
+        statistics = JSON.parse(JSON.stringify(await getStatistics()));
+        statistics = statistics.optional;
+        statistics.audiocallAnswers++;
+    }
     let buttonClickedUser = document.querySelector(`#button-answer-audiocall-${numberAnswerFromUser}`);
     let buttonRightAnswer = document.querySelector(`#button-answer-audiocall-${numberOfRightAnswer}`);
     buttonNextWorldAudiocall.innerHTML = 'Дальше';
     if (numberAnswerFromUser === numberOfRightAnswer) {
         rightAnswersInRow++;
-        if (rightAnswersInRow > statistics.rightAnswersInRowAudiocall) {
-            statistics.rightAnswersInRowAudiocall = rightAnswersInRow;
+        if (userIsLogged) {
+            if (rightAnswersInRow > statistics.rightAnswersInRowAudiocall) {
+                statistics.rightAnswersInRowAudiocall = rightAnswersInRow;
+            }
+            statistics.audiocallRightAnswers++;
+            await updateStatisticsWord(idRightAnswerAudiocall, 'audiocall', true)
         }
-        statistics.audiocallRightAnswers++;
         addRightOrFalseAnswer(guessWord, translateGuessWord, true, audioRightAnswerId, rightAnwersAudiocall);
         audioRightAnswer.play();
-        await updateStatisticsWord(idRightAnswerAudiocall, 'audiocall', true);
         numbersOfRightAnswer++;
     } else {
         rightAnswersInRow = 0;
         addRightOrFalseAnswer(guessWord, translateGuessWord, false, audioRightAnswerId, wrongAnwersAudiocall);
         buttonClickedUser.classList.add('false-answer-audiocall');
         audioWrongAnswer.play();
-        await updateStatisticsWord(idRightAnswerAudiocall, 'audiocall', false);
+        if (userIsLogged) {
+            await updateStatisticsWord(idRightAnswerAudiocall, 'audiocall', false);
+        }
         numbersOfWrongAnswer++;
     }
     let numbersOfAnswers = numbersOfRightAnswer + numbersOfWrongAnswer;
     lineOfProgress.style.background = `-webkit-linear-gradient(left, #00bf97 0%, #00bf97 ${numbersOfAnswers * 10}%, #fff ${numbersOfAnswers * 10}%, #fff 100%)`;
     buttonRightAnswer.classList.add('right-answer-audiocall');
-    createDataStatistic({ optional: statistics });
-    addDataNewWord(idRightAnswerAudiocall);
+    if (userIsLogged) {
+        createDataStatistic({ optional: statistics });
+        addDataNewWord(idRightAnswerAudiocall);
+    }
 }
 
 function showOrHideImgAndWord() {

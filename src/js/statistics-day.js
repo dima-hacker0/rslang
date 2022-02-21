@@ -29,7 +29,6 @@ async function updateTodayData() {
     createDataStatistic({ optional: { dataNewWord: todayData, sprintAnswers: 0, sprintRightAnswers: 0, audiocallAnswers: 0, audiocallRightAnswers: 0, rightAnswersInRowAudiocall: 0, rightAnswersInRowSprint: 0 } });
   }
 }
-updateTodayData();
 
 async function getStatistics() {
   const rawResponse = await fetch(`https://react-learnwords-dima-hacker0.herokuapp.com/users/${userId}/statistics`, {
@@ -92,7 +91,6 @@ async function getLearnedWords() {
 async function updateStatisticsHTML() {
   let learnedWords = await getLearnedWords();
   let statistics = await getStatistics();
-  console.log(statistics);
   if (statistics === 'there-are-no-statistics') return;
   let percentRightAnswers = Math.round(((statistics.optional.audiocallRightAnswers + statistics.optional.sprintRightAnswers) / (statistics.optional.audiocallAnswers + statistics.optional.sprintAnswers)) * PERCENTAGES);
   if (isNaN(percentRightAnswers)) {
@@ -113,8 +111,7 @@ async function updateStatisticsHTML() {
   answersInRowSprint.innerHTML = `самая длинная серия правильных ответов: ${statistics.optional.rightAnswersInRowSprint}`;
   answersInRowAudiocall.innerHTML = `самая длинная серия правильных ответов: ${statistics.optional.rightAnswersInRowAudiocall}`;
 }
-updateStatisticsHTML();
 
 export {
- createDataStatistic, updateTodayData, updateToken, getStatistics, token, userId, addDataNewWord
+ createDataStatistic, updateTodayData, updateToken, getStatistics, token, userId, addDataNewWord, updateStatisticsHTML
 };

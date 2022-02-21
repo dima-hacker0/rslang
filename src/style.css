@@ -86,9 +86,6 @@ input {
 .navigation-pages li {
   list-style-type: none;
 }
-.page-navigation:first-child {
-  padding-top: 30px;
-}
 .page-navigation {
   color: white;
   font-size: 18px;
@@ -1216,4 +1213,31 @@ input {
 }
 .block-new-words {
   text-align: center;
+}
+.section-team {
+  min-height: calc(100vh - 120px);
+}
+.container-team {
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+}
+.column-avatar {
+}
+.img-avatar {
+  width: 200px;
+  border-radius: 3px;
+  margin-right: 15px;
+}
+.header-team-page {
+  font-size: 45px;
+  margin-top: -11px;
+}
+.this-page-is-learned {
+  color: #00bf97;
+  font-size: 30px;
+  font-weight: 600;
+}
+.content-for-log-in-users {
+  display: none;
 }

@@ -3,6 +3,7 @@ import { currentTextBookPage, currentDifficultyLevel } from './textbook';
 import { goToAnotherPage } from './navigation';
 import { updateStatisticsWord } from './statistics';
 import { createDataStatistic, getStatistics, addDataNewWord } from './statistics-day';
+import { userIsLogged } from './registration';
 
 const areaGameSprint = document.querySelector('.game-area-sprint');
 const falseButton = document.querySelector('.false-button-sprint');
@@ -77,12 +78,13 @@ async function createNewQuestion() {
 }
 
 async function checkAnswer(answerFromUser) {
-    let statistics = JSON.parse(JSON.stringify(await getStatistics()));
-    statistics = statistics.optional;
-    statistics.sprintAnswers++;
+    let statistics;
+    if (userIsLogged) {
+        statistics = JSON.parse(JSON.stringify(await getStatistics()));
+        statistics = statistics.optional;
+        statistics.sprintAnswers++;
+    }
     if (answerFromUser === trueOrFalseAnswer) {
-        statistics.sprintRightAnswers++;
-        updateStatisticsWord(currentGuessObject.id, 'sprint', true);
         audioRightAnswer.currentTime = 0;
         audioRightAnswer.play();
         numdersRightAnswers++;
@@ -90,14 +92,17 @@ async function checkAnswer(answerFromUser) {
         areaGameSprint.classList.add('right-answer');
         changeScore();
         rightAnswersInRow++;
-        if (rightAnswersInRow > statistics.rightAnswersInRowSprint) {
-            statistics.rightAnswersInRowSprint = rightAnswersInRow;
-        }
         setTimeout(function () {
             areaGameSprint.classList.remove('right-answer');
         }, 500);
+        if (userIsLogged) {
+            statistics.sprintRightAnswers++;
+            updateStatisticsWord(currentGuessObject.id, 'sprint', true);
+            if (rightAnswersInRow > statistics.rightAnswersInRowSprint) {
+                statistics.rightAnswersInRowSprint = rightAnswersInRow;
+            }
+        }
     } else {
-        updateStatisticsWord(currentGuessObject.id, 'sprint', false);
         audioWrongAnswer.currentTime = 0;
         audioWrongAnswer.play();
         numbersWrongAnswers++;
@@ -108,10 +113,15 @@ async function checkAnswer(answerFromUser) {
         setTimeout(function () {
             areaGameSprint.classList.remove('false-answer');
         }, 500);
+        if (userIsLogged) {
+            updateStatisticsWord(currentGuessObject.id, 'sprint', false);
+        }
     }
     createNewQuestion();
-    createDataStatistic({ optional: statistics });
-    addDataNewWord(currentGuessObject.id);
+    if (userIsLogged) {
+        createDataStatistic({ optional: statistics });
+        addDataNewWord(currentGuessObject.id);
+    }
 }
 
 falseButton.addEventListener('click', function () {
